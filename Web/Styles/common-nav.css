@@ -1,0 +1,90 @@
+/********************** Portal Commons begins **********************/
+.p4fnav-clear{clear:both;overflow:hidden;height:0;}
+
+/********************** Top Nav begins **********************/
+
+/* Top Nav Full */
+.p4fnav-topnav-full {position:absolute;font-family:Arial,Helvetica,sans-serif;font-size:11px;z-index:9999;*height:1px;width:100%;height:40px;background:transparent url('https://www.play4free.com/static/theme/p4f-common-theme/images/global/topnav-full/p4fnav-full-bg.png') 0 0 repeat-x;top:0;left:0;line-height:15px;}
+.p4fnav-topnav-full a {margin: 0;padding: 0;border: 0;outline: 0;font-size: 100%;background:transparent;}
+.p4fnav-topnav-full .p4fnav-menu-block {margin:0 auto;max-width:975px;padding: 0 10px;/*background:transparent url('https://www.play4free.com/static/theme/p4f-common-theme/images/global/topnav-full/p4fnav-full-bg-noshadow.png') -135px 0 no-repeat scroll;*/}
+.p4fnav-topnav-full .p4fnav-url,
+.p4fnav-topnav-full .p4fnav-lang-selector,
+.p4fnav-topnav-full .p4fnav-lang-lbl{float:right;color:#FFF;margin-top:9px;font-family:'PT Sans',Arial,Helvetica,sans-serif;font-size:11px;font-weight:normal;text-decoration:none;text-transform:uppercase;}
+
+.p4fnav-topnav-full .p4fnav-topnav-separator {display:inline-block;float:none;background:transparent url('https://www.play4free.com/static/theme/p4f-common-theme/images/global/topnav-full/p4fnav-icons-sprite.png') -19px 0 no-repeat;width:2px;height:8px;margin:14px 15px;}
+.p4fnav-topnav-full .p4fnav-lang-selector {margin:0 4px 0 -5px;padding:9px;padding-bottom:4px;cursor:pointer;height:21px;width:auto;}
+.p4fnav-topnav-full div.p4fnav-lang-selector .p4fnav-lang-globe {background:transparent url('https://www.play4free.com/static/theme/p4f-common-theme/images/global/topnav-full/p4fnav-icons-sprite.png') 0 0 no-repeat;width:19px;height:19px;display:inline-block;float:none;}
+.p4fnav-topnav-full div.p4fnav-lang-selector:hover .p4fnav-lang-globe {background-position:0 -19px;}
+.p4fnav-topnav-full .p4fnav-lang-lbl {float:left;margin:0 10px;}
+.p4fnav-topnav-full div.p4fnav-lang-selector:hover .p4fnav-lang-lbl {color:#000;}
+
+.p4fnav-topnav-full .p4fnav-url,
+.p4fnav-topnav-full .p4fnav-lang-selector .p4fnav-lang-lbl {display:inline-block;float:none;vertical-align:top;}
+.p4fnav-topnav-full .p4fnav-lang-selector .p4fnav-lang-lbl {margin:0 7px;}
+
+#p4fnav-logout-block .p4fnav-url,
+#p4fnav-logout-block .p4fnav-topnav-separator {display:block;float:right;}
+
+/*Language Pop-down menu*/
+.p4fnav-topnav-full .p4fnav-lang-menu-wrapper{float:right;position:relative;}
+.p4fnav-topnav-full .p4fnav-lang-menu {
+z-index:9999;
+background:transparent url('https://www.play4free.com/static/theme/p4f-common-theme/images/global/topnav-full/default-lang-menu-bg.png') 0 0 no-repeat;
+width:215px;
+height:auto;
+margin:0 !important;
+padding:0;
+padding-bottom:6px;
+position:absolute;
+right:-12px;
+top:35px;
+}
+.p4fnav-topnav-full .p4fnav-lang-menu div.p4fnav-lang-lbl {margin:7px 10px 0 7px;text-align:left;}
+.p4fnav-topnav-full .p4fnav-lang-menu div.p4fnav-lang-lbl b {font-weight:bold;}
+.p4fnav-topnav-full .p4fnav-logged-in {background:transparent url('https://www.play4free.com/static/theme/p4f-common-theme/images/global/topnav-full/p4fnav-logged-in.png') 0 0 no-repeat;cursor:pointer;width:13px;height:18px;margin:7px 5px 0 0;float:right;}
+.p4fnav-topnav-full .p4fnav-url.email {text-transform:lowercase;}
+/* Default */
+.p4fnav-topnav-full .p4fnav-menu {position:relative;float:right;background:transparent url('https://www.play4free.com/static/theme/p4f-common-theme/images/global/topnav-beta/p4fnav-menu.png') 0 0 no-repeat;width:400px;min-height:410px;z-index:9999;padding:5px 0;}
+.p4fnav-topnav-full .p4fnav-more-games-wrapper {overflow:hidden;position:relative;float:right;width:119px;}
+.p4fnav-topnav-full a.p4fnav-more-games-btn {position:relative;float:right;text-align:center;background:transparent url('https://www.play4free.com/static/theme/p4f-common-theme/images/global/topnav-beta/btn-more-games.png') 0 -292px no-repeat;width:119px;height:73px;z-index:9999;color:#FFF;font-family:Arial,Helvetica,sans-serif;font-size:14px;text-decoration:none;}
+.p4fnav-topnav-full a.p4fnav-more-games-btn:hover {background-position:0 -220px;}
+
+.p4fnav-topnav-full .p4fnav-more-games-btn div {position:absolute;bottom:12px;color:#FFF;font-family:'PT Sans',sans-serif,Arial,Helvetica;font-size:14px;text-transform:uppercase;text-align:right;cursor:pointer;}
+.p4fnav-topnav-full .p4fnav-more-games-btn.en div {width:103px;right:18px;*right:16px;}
+.p4fnav-topnav-full .p4fnav-more-games-btn div b {white-space:nowrap;font-family:'PT Sans',Arial,Helvetica,sans-serif !important;font-weight:bold;}
+.p4fnav-topnav-full .p4fnav-block {float:right;}
+.p4fnav-topnav-full .p4fnav-url:hover{color:#57cde0;}
+.p4fnav-topnav-full div.p4fnav-lang-selector:hover{background-color:#57cde0;}
+.p4fnav-topnav-full div.p4fnav-url.email {color:#57cde0;cursor:pointer;font-weight:bold;max-width:152px;overflow:hidden;text-align:right;}
+
+#p4fnav-logout-link {background-color:transparent;border:medium none;cursor:pointer;overflow:visible;padding:0;white-space:nowrap;text-align:center;}
+#p4fnav-logout-form {float:right;}
+
+/* origindark */
+.p4fnav-topnav-full.origindark .p4fnav-menu {width:357px;}
+.p4fnav-topnav-full.origindark{background-image:url('https://www.play4free.com/static/theme/p4f-common-theme/images/global/topnav-full/p4fnav-full-bg-origindark.png');color:#575757;}
+.p4fnav-topnav-full.origindark .ea-logo{background:transparent url('https://www.play4free.com/static/theme/p4f-common-theme/images/global/topnav-full/ea-logo.png') 0 0 no-repeat;width:27px;height:27px;display:block;float:left;margin-top:6px;}
+.p4fnav-topnav-full.origindark .p4fnav-url{color:#bdbebe;font-size:11px;font-weight:bold;}
+.p4fnav-topnav-full.origindark .p4fnav-url:hover{color:#575757;}
+.p4fnav-topnav-full.origindark .p4fnav-url.email{color:#575757;}
+.p4fnav-topnav-full.origindark .p4fnav-lang-lbl{color:#000;font-size:11px;}
+.p4fnav-topnav-full.origindark .p4fnav-lang-selector:hover{background-color:#e8e8e8;}
+.p4fnav-topnav-full.origindark .p4fnav-lang-selector .p4fnav-lang-lbl{color:#bebebe;}
+.p4fnav-topnav-full.origindark .p4fnav-lang-menu{background:url('https://www.play4free.com/static/theme/p4f-common-theme/images/global/topnav-full/p4fnav-lang-menu-origindark.png') 0 0 no-repeat transparent;width:215px;left:-8px;}
+.p4fnav-topnav-full.origindark a.p4fnav-more-games-btn{background:url('https://www.play4free.com/static/theme/p4f-common-theme/images/global/topnav-beta/btn-more-games-origindark.png') 0 0 no-repeat;width:176px;height:42px;}
+.p4fnav-topnav-full.origindark a.p4fnav-more-games-btn:hover{background-position:0 -42px;}
+.p4fnav-topnav-full.origindark .p4fnav-menu{background:url('https://www.play4free.com/static/theme/p4f-common-theme/images/global/topnav-beta/p4fnav-menu-origindark.png') 0 0 no-repeat transparent;margin-top:-8px;}
+.p4fnav-topnav-full.origindark .p4fnav-more-games-btn div {color:#575757;text-align:left;font-size:12px;font-weight:bold;right:10px;width:123px;line-height:11px;height:19px;font-family:'klavika-web',helvetica,arial,sans-serif !important;}
+.p4fnav-topnav-full.origindark .p4fnav-more-games-btn div b {font-family:'klavika-web',helvetica,arial,sans-serif !important;}
+.p4fnav-topnav-full.origindark .p4fnav-more-games-wrapper {width:176px;}
+
+
+/* Mobile */
+@media (max-width: 767px) {
+	.p4fnav-topnav-full .p4fnav-more-games-wrapper { display:none; }
+	.p4fnav-topnav-full.origindark .p4fnav-lang-menu { right:-9px; left:auto; }
+	.p4fnav-topnav-full div.p4fnav-url.email { max-width: 130px; }
+	.p4fnav-topnav-full .p4fnav-topnav-separator { margin: 14px 12px; }
+}
+
+/********************** Top Nav ends **********************/

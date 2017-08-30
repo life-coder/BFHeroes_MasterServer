@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>Free FPS - Free Shooter Game - Online shooter - Battlefield Heroes</title>
+	<meta charset="utf-8">
+	<style>
+	       @font-face {
+	           font-family: 'HeaderFont';
+	           src: url('/Fonts/SofiaProSemiBold.eot');
+	           src: url('/Fonts/SofiaProSemiBold.eot#iefix') format('embedded-opentype'),
+	           url('/Fonts/SofiaProSemiBold.woff') format('woff'),
+	           url('/Fonts/SofiaProSemiBold.ttf') format('truetype');
+	       }
+	                
+	       @font-face {
+	           font-family: 'ComicFont';
+	           src: url('/Fonts/CaptainComicProBoldItalic.eot');
+	           src: url('/Fonts/CaptainComicProBoldItalic.eot#iefix') format('embedded-opentype'),
+	           url('/Fonts/CaptainComicProBoldItalic.woff') format('woff'),
+	           url('/Fonts/CaptainComicProBoldItalic.ttf') format('truetype');
+	       }
+	</style>
+	<link href="Styles/main.css" media="screen" rel="stylesheet" type="text/css">
+	<link href="Styles/createHero.css" media="screen" rel="stylesheet" type="text/css">
+	<link href="Styles/register.css" media="screen" rel="stylesheet" type="text/css">
+</head>
+
+<body class="createHero user web stripped" data-twttr-rendered="true" id="user">
+	<a class="go_to_site" href="/Login">I already have an account, continue.</a>
+
+	<div id="siteContainer">
+		<div id="siteHeader">
+			<a class="logoArea" href="/"><img alt="Battlefield Heroes" class="logo" src="Images/logo.png"></a>
+
+			<ol class="steps">
+				<li class="step1"><span><span class="index">1.</span>create a hero</span>
+				</li>
+
+
+				<li class="step2 current"><span><span class="index">2.</span>sign up</span>
+				</li>
+
+
+				<li class="step3"><span><span class="index">3.</span>download</span>
+				</li>
+			</ol>
+		</div>
+
+
+		<div class="sunset-info" id="loginError">
+			<script>
+			 function closeMessage() (
+			     document.getElementById("loginError").style.display = "none"
+			 )
+			</script>
+
+			<div class="bfhBox bfhBox-red bfhBox-has-splatter">
+				<div class="wrapper">
+					<h2 class="bfhBox-heading">Error</h2>
+
+
+					<div class="content clearfix">
+						<div class="infoicon">
+						</div>
+
+
+						<div id="error">
+						</div>
+
+
+						<div class="buttons">
+							<span class="continue bfhButton right"><span class="first-child" onclick="closeMessage()"><button><span class="continue bfhButton right"><span class="continue bfhButton right">Continue</span></span></button></span></span>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="bg">
+					<u class="w">&nbsp;</u><u class="e">&nbsp;</u><i class="w">&nbsp;</i><i class="e">&nbsp;</i><b class="w">&nbsp;</b><b class="e">&nbsp;</b>
+				</div>
+
+
+				<div class="splatter splatter-3">
+				</div>
+			</div>
+
+
+			<div class="overlay">
+			</div>
+		</div>
+
+
+		<div class="mainContentArea">
+			<div class="clearfix" id="content">
+				<form action="/api/register" class="register new_content" method="post">
+					<div class="header">
+						<h2>Register</h2>
+					</div>
+
+
+					<div class="clearfix magmaFormElementWrapper magmaInputWrapper">
+						<label class="magmaLabel" for="username">Username</label><span class="magmaInput size-300"><input id="username" name="username" size="300" type="text"></span>
+
+						<div class="magmaAfter">
+						</div>
+					</div>
+
+
+					<div class="clearfix magmaFormElementWrapper magmaInputWrapper">
+						<label class="magmaLabel" for="password">Password</label><span class="magmaInput size-300"><input id="password" name="password" size="300" type="password"></span>
+
+						<div class="magmaAfter">
+						</div>
+					</div>
+
+
+					<div class="clearfix magmaFormElementWrapper magmaInputWrapper">
+						<label class="magmaLabel" for="password2">Confirm Password</label><span class="magmaInput size-300"><input id="password2" name="password2" size="300" type="password"></span>
+
+						<div class="magmaAfter">
+						</div>
+					</div>
+					<span class="bfhButton"><span class="first-child"><button id="register" type="button"><span class="bfhButton"><span class="bfhButton">Register</span></span></button></span></span>
+				</form>
+			</div>
+		</div>
+
+
+		<div id="siteFooter">
+			﻿
+
+			<ul class="icons en">
+				<li class="pegiLink">
+					<a href="http://www.pegionline.eu/">PEGI</a>
+				</li>
+
+
+				<li class="esrbLink">
+					<a href="http://www.esrb.org/">ESRB</a>
+				</li>
+
+
+				<li class="easyLink">
+					<a href="http://easystudios.se/">EASY</a>
+				</li>
+
+
+				<li class="eaLink">
+					<a href="http://www.ea.com/">EA</a>
+				</li>
+			</ul>
+
+
+			<div class="legal">
+				<a href="http://www.ea.com/global/legal/legalnotice.jsp" id="footerLinks-legalnotice">© 2014 EA Digital Illusions CE AB. All Rights Reserved.</a><br>
+				<a href="http://www.ea.com/uk/1/online-safety" id="footerLinks-osg">Online Safety Guidelines</a> | <a href="http://easystudios.se/" id="footerLinks-aboutUs">About Us</a> | <a href="http://tos.ea.com/legalapp/WEBPRIVACY/US/en/PC" id="footerLinks-privacy">Privacy Policy</a> | <a href="http://tos.ea.com/legalapp/WEBTERMS/US/en/PC" id="footerLinks-tos">TOS</a> | <a href="http://www.battlefieldheroes.com:80/user/euala/en?p=true" id="footerLinks-euala">EUALA</a> | <a href="http://www.battlefieldheroes.com:80/user/roc/en" id="footerLinks-roc">Rules of Conduct</a> | <a href="http://easystudios.se/" id="footerLinks-jobs">Jobs</a>
+			</div>
+		</div>
+	</div>
+	<script>
+	document.getElementById("register").addEventListener("click", function () {
+	     var xhttp = new XMLHttpRequest();
+	     var username = document.getElementById("username").value;
+	     var password = document.getElementById("password").value;
+	     var password_confirmation = document.getElementById("password2").value;
+	     xhttp.onreadystatechange = function() {
+	       if (this.readyState == 4 && this.status == 200) {
+	        var jsonResponse = JSON.parse(this.responseText);
+	        if (jsonResponse.status == "err") {
+	           var errorMessage = jsonResponse.message;
+	           document.getElementById("loginError").style.display = "block";          
+	           document.getElementById("error").innerHTML = "<p>" + errorMessage + "<\/p>";
+	           document.getElementById("loginForm").className = "loginForm"
+	        } else if (jsonResponse.status == "ok") {
+	           window.location.href = jsonResponse.data.redirect;
+	        }
+	       }
+	     };
+	     xhttp.open("POST", "/api/register", true);
+	     xhttp.send("username="+username+"&password="+password+"&password2="+password_confirmation);
+	});
+	</script>
+</body>
+</html>

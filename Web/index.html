@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>Free FPS - Free Shooter Game - Online shooter - Battlefield Heroes</title>
+	<meta charset="utf-8">
+	<style>
+	          @font-face {
+	              font-family: 'HeaderFont';
+	              src: url('/Fonts/SofiaProSemiBold.eot');
+	              src: url('/Fonts/SofiaProSemiBold.eot#iefix') format('embedded-opentype'),
+	              url('/Fonts/SofiaProSemiBold.woff') format('woff'),
+	              url('/Fonts/SofiaProSemiBold.ttf') format('truetype');
+	          }
+	          
+	          @font-face {
+	              font-family: 'ComicFont';
+	              src: url('/Fonts/CaptainComicProBoldItalic.eot');
+	              src: url('/Fonts/CaptainComicProBoldItalic.eot#iefix') format('embedded-opentype'),
+	              url('/Fonts/CaptainComicProBoldItalic.woff') format('woff'),
+	              url('/Fonts/CaptainComicProBoldItalic.ttf') format('truetype');
+	          }
+	</style>
+	<link href="Styles/main.css" media="screen" rel="stylesheet" type="text/css">
+	<link href="Styles/common-nav.css" media="screen" rel="stylesheet" type="text/css">
+	<script>
+	   function showMessage() {
+	      if(typeof(Storage) !== "undefined") {
+	          if (localStorage.MessageDisable) {
+	              document.getElementById("message").style.display = "none";
+	              document.getElementById("loginForm").className += " submitted"
+	          } else {
+	              document.getElementById("message").style.display = "block";
+	              localStorage.MessageDisable = 'True';
+	              
+	          }
+	      } else {
+	          document.getElementById("message").style.display = "block";
+	      }
+	      
+	     var xhttp = new XMLHttpRequest();
+	     var username = document.getElementById("mail").value;
+	     var password = document.getElementById("password").value;
+	     xhttp.onreadystatechange = function() {
+	       if (this.readyState == 4 && this.status == 200) {
+	        var jsonResponse = JSON.parse(this.responseText);
+	        if (jsonResponse.status == "err") {
+	           var errorMessage = jsonResponse.message;
+	           document.getElementById("loginError").style.display = "block";          
+	           document.getElementById("error").innerHTML = "<p>" + errorMessage + "<\/p>";
+	           document.getElementById("loginForm").className = "loginForm"
+	        } else if (jsonResponse.status == "ok") {
+	           window.setTimeout(function () {
+	               window.location.href = jsonResponse.data.redirect;
+	           }, 1500);
+	        }
+	       }
+	     };
+	     xhttp.open("POST", "/api/login", true);
+	     xhttp.send("username="+username+"&password="+password);
+	     
+	      
+	      
+	      
+	   }
+	</script>
+</head>
+
+<body class="index frontpage lang-en" data-twttr-rendered="true" id="frontpage" style="background-image: url(/Images/Backgrounds/default_1.jpg); background-color:#fff">
+	<div class="p4fnav-topnav-full origindark" id="p4fnav-topnav-full" style="opacity: 1;">
+		<div class="p4fnav-menu-block">
+			<a class="ea-logo en" href="https://github.com/B1naryKill3r" id="p4fnav-p4f-logo-full"></a>
+
+			<div class="p4fnav-block">
+				<!-- More Games Label -->
+
+
+				<div class="p4fnav-more-games-wrapper" style="">
+					<a class="p4fnav-more-games-btn en" href="#" id="p4fnav-more-games-btn" style="">
+					<div>
+						More <b>Free Games</b>
+					</div></a>
+				</div>
+				<!-- Language Selector Menu -->
+
+
+				<div class="p4fnav-lang-menu-wrapper">
+					<div class="p4fnav-lang-menu" id="p4fnav-lang-selector-dropdown" style="display:none;">
+						<div class="p4fnav-lang-lbl">
+							<b>Language</b>
+						</div>
+						<input id="p4fnav-supported-lang-regex" type="hidden" value="(de|en|es|fr|it|nl|pl|pt|br|ru|tr)">
+					</div>
+					<!-- Language Selector -->
+
+
+					<div class="p4fnav-lang-selector" id="p4fnav-lang-selector-btn">
+						<div class="p4fnav-lang-globe">
+						</div>
+						<a class="p4fnav-lang-lbl" href="#">English</a>
+					</div>
+				</div>
+
+
+				<div id="p4fnav-login-block" style="display:block;float:right;">
+					<a class="p4fnav-url" href="/Register">Register</a>
+
+					<div class="p4fnav-topnav-separator">
+					</div>
+				</div>
+
+
+				<div id="p4fnav-logout-block" style="display:none;float:right;">
+					<div class="p4fnav-topnav-separator">
+					</div>
+
+
+					<form action="/api/Logout" id="p4fnav-logout-form" method="post" name="p4fnav-logout-form">
+						<button class="p4fnav-url" id="p4fnav-logout-link" style="background-color:transparent;border:none;" type="submit">Logout</button>
+					</form>
+					<!-- Login state -->
+
+
+					<div id="p4fnav-logged-in-block" style="float:right;">
+						<div class="p4fnav-topnav-separator">
+						</div>
+						<a href="/Profile">
+						<div class="p4fnav-url email" id="p4fnav-logged-in-user">
+						</div>
+						<!-- Login user icon -->
+
+
+						<div class="p4fnav-logged-in">
+						</div></a>
+					</div>
+				</div>
+
+
+				<div class="p4fnav-clear">
+				</div>
+				<!-- Menu -->
+
+
+				<div class="p4fnav-menu" id="p4fnav-more-games-dropdown" style="display:none;">
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="sunset-info" id="message">
+		<div class="bfhBox bfhBox-red bfhBox-has-splatter">
+			<div class="wrapper">
+				<h2 class="bfhBox-heading">Important Notice</h2>
+
+
+				<div class="content clearfix">
+					<div class="infoicon">
+					</div>
+
+
+					<p>Original Battlefield Heroes Servers was turned off on Tuesday, July 14th, 2015. Our service will allow you to play this awesome game after this date. Have Fun!<br>
+					<br>
+					Disclaimer: This emulator does not belong to Electronic Arts and any other companies belonging to this company.<br>
+					This emulator was created to Educational purposes only!</p>
+
+
+					<div class="buttons">
+						<span class="continue bfhButton right"><span class="first-child" onclick="showMessage()"><button><span class="continue bfhButton right"><span class="continue bfhButton right">Continue</span></span></button></span></span>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="bg">
+				<u class="w">&nbsp;</u><u class="e">&nbsp;</u><i class="w">&nbsp;</i><i class="e">&nbsp;</i><b class="w">&nbsp;</b><b class="e">&nbsp;</b>
+			</div>
+
+
+			<div class="splatter splatter-3">
+			</div>
+		</div>
+
+
+		<div class="overlay">
+		</div>
+	</div>
+
+
+	<div class="sunset-info" id="loginError">
+				<script>
+			 function closeMessage() (
+			     document.getElementById("loginError").style.display = "none"
+			 )
+			</script>
+		<div class="bfhBox bfhBox-red bfhBox-has-splatter">
+			<div class="wrapper">
+				<h2 class="bfhBox-heading">Error</h2>
+
+
+				<div class="content clearfix">
+					<div class="infoicon">
+					</div>
+
+
+					<div id="error">
+					</div>
+
+
+					<div class="buttons">
+						<span class="continue bfhButton right"><span class="first-child" onclick="closeMessage()"><button><span class="continue bfhButton right"><span class="continue bfhButton right">Continue</span></span></button></span></span>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="bg">
+				<u class="w">&nbsp;</u><u class="e">&nbsp;</u><i class="w">&nbsp;</i><i class="e">&nbsp;</i><b class="w">&nbsp;</b><b class="e">&nbsp;</b>
+			</div>
+
+
+			<div class="splatter splatter-3">
+			</div>
+		</div>
+
+
+		<div class="overlay">
+		</div>
+	</div>
+
+
+	<div id="siteContainer">
+		<div id="siteHeader">
+			<a class="logoArea" href="#"><img alt="Battlefield Heroes" class="logo" src="Images/logo.png"></a>
+
+			<ul class="menu">
+			</ul>
+			<a class="playNow" href="$LaunchGame"><span class="playNow">Play Now!</span></a>
+
+			<form action="/api/Login" class="loginForm" id="loginForm" method="post" name="loginForm">
+				<input id="mail" maxlength="100" name="mail" placeholder="Email:" tabindex="1" type="text"> <input id="password" maxlength="100" name="password" placeholder="Password:" tabindex="2" type="password"> <span class="submit" onclick="showMessage()" tabindex="3">Login<span class="decoration"></span></span>
+
+				<div class="loading">
+					&nbsp;
+				</div>
+				<span class="message">Logging you in, please wait...</span>
+			</form>
+
+
+			<div class="mainContentArea">
+			</div>
+
+
+			<div id="siteFooter">
+				﻿
+
+				<ul class="icons en">
+					<li class="pegiLink">
+						<a href="http://www.pegionline.eu/">PEGI</a>
+					</li>
+
+
+					<li class="esrbLink">
+						<a href="http://www.esrb.org/">ESRB</a>
+					</li>
+
+
+					<li class="easyLink">
+						<a href="http://easystudios.se/">EASY</a>
+					</li>
+
+
+					<li class="eaLink">
+						<a href="http://www.ea.com/">EA</a>
+					</li>
+				</ul>
+
+
+				<div class="legal">
+					<a href="http://www.ea.com/global/legal/legalnotice.jsp" id="footerLinks-legalnotice">© 2015 EA Digital Illusions CE AB. All Rights Reserved.</a><br>
+					<a href="http://www.ea.com/uk/1/online-safety" id="footerLinks-osg">Online Safety Guidelines</a> | <a href="http://easystudios.se/" id="footerLinks-aboutUs">About Us</a> | <a href="http://tos.ea.com/legalapp/WEBPRIVACY/US/en/PC" id="footerLinks-privacy">Privacy Policy</a> | <a href="http://tos.ea.com/legalapp/WEBTERMS/US/en/PC" id="footerLinks-tos">TOS</a> | <a href="http://battlefieldheroes.com/user/euala/en?p=true" id="footerLinks-euala">EULA</a> | <a href="http://battlefieldheroes.com/user/roc/en" id="footerLinks-roc">Rules of Conduct</a> | <a href="http://easystudios.se/" id="footerLinks-jobs">Jobs</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

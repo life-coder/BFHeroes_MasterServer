@@ -1,0 +1,224 @@
+
+ul.login-links {
+	width: 200px;
+	margin-left: 2px;
+}
+
+ul.login-links a {
+	color: #000000;
+	text-decoration: underline;
+}
+
+.new_content:before {
+	content: "";
+	display: block;
+	background: url(/Images/Registration/box_decoration_top.png) -16px 0 no-repeat;
+	position: absolute;
+	top: -51px;
+	right: -36px;
+	height: 85px;
+	width: 577px;
+}
+
+.new_content:after {
+	content: "";
+	display: block;
+	background: url(/Images/Registration/box_decoration_bottom.png) 0 0 no-repeat;
+	position: absolute;
+	bottom: -30px;
+	right: -22px;
+	height: 75px;
+	width: 589px;
+}
+
+.new_content {
+	background: url(/Images/Registration/spatter1.png) repeat-x center -20px #c5bba7;
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	box-shadow: 0 0 0 2px #000;
+	-moz-box-shadow: 0 0 0 2px #000;
+	-webkit-box-shadow: 0 0 0 2px #000;
+	color: #000;
+	margin: 30px 90px 30px auto;
+	min-height: 135px;
+	padding: 25px;
+	position: relative;
+	width: 500px;
+	z-index: 1;
+}
+
+.new_content .header {
+	background: #8b342f;
+	border: 1px solid #c54e47;
+	border-bottom-width: 0;
+	box-shadow: 0 0 0 2px #000;
+	-moz-box-shadow: 0 0 0 2px #000;
+	-webkit-box-shadow: 0 0 0 2px #000;
+	-webkit-border-top-left-radius: 3px;
+	-webkit-border-top-right-radius: 3px;
+	-moz-border-radius-topleft: 3px;
+	-moz-border-radius-topright: 3px;
+	position: absolute;
+	top: -1px;
+	right: -1px;
+	left: -1px;
+	height: 8px;
+	border-radius: 3px 3px 0 0;
+	behavior: url("/web/20130821061731im_/https://www.battlefieldheroes.com/static/images/registration/ie7/PIE.php");
+}
+
+.new_content .header h2 {
+	color: #fff;
+	display: block;
+	font-size: 1.3em;
+	margin: 0;
+	background: url(/Images/Registration/red_header.png) no-repeat right top;
+	height: 30px;
+	line-height: 30px;
+	position: absolute;
+	right: -3px;
+	bottom: 0;
+	padding: 0 20px 0 6px;
+}
+
+.new_content .header h2:before {
+	content: '';
+	display: block;
+	position: absolute;
+	left: -20px;
+	top: 0px;
+	background: url(/Images/Registration/red_header_left.png) no-repeat left top;
+	width: 20px;
+	height: 22px;
+}
+
+.new_content label {
+	clear: left;
+	display: block;
+	z-index: 2;
+}
+
+form.login:before {
+	background-image: url(/Images/Registration/login_box_top.png);
+	width: 75px;
+	height: 294px;
+	top: -42px;
+	right: -58px;
+}
+
+form.login:after {
+	background-image: url(/Images/Registration/login_box_bottom.png);
+	bottom: -32px;
+	height: 41px;
+	left: -9px;
+	right: auto;
+	width: 180px;
+}
+
+form.login {
+	background-position: center -3px;
+	float: left;
+	margin: 10px 0 0 80px;
+	min-height: 190px;
+	padding: 40px 80px 25px;
+	width: 600px;
+}
+
+form.login .header {
+	height: 20px;
+}
+
+form.login .header h2 {
+	background: url(/Images/Registration/login_headers.png) no-repeat left center;
+	position: absolute;
+	left: -10px;
+	top: -20px;
+	height: 63px;
+	text-indent: -9999px;
+}
+
+form.login .header h2 {
+	width: 203px;
+}
+
+form.login .header h2:before {
+	display: none;
+}
+
+form.login .bfhButton {
+	float: right;
+}
+
+form.register:before {
+	background-image: url(/Images/Registration/login_box_top.png);
+	width: 75px;
+	height: 294px;
+	top: -42px;
+	right: -58px;
+}
+
+form.register:after {
+	background-image: url(/Images/Registration/login_box_bottom.png);
+	bottom: -32px;
+	height: 41px;
+	left: -9px;
+	right: auto;
+	width: 180px;
+}
+
+form.register {
+	background-position: center -3px;
+	float: left;
+	margin: 10px 0 0 80px;
+	min-height: 190px;
+	padding: 40px 80px 25px;
+	width: 600px;
+}
+
+form.register .header {
+	height: 20px;
+}
+
+form.register .header h2 {
+	background: url(/Images/Registration/signup.png) no-repeat left center;
+	position: absolute;
+	left: -10px;
+	top: -20px;
+	height: 63px;
+	text-indent: -9999px;
+}
+
+form.register .header h2 {
+	width: 203px;
+}
+
+form.register .header h2:before {
+	display: none;
+}
+
+form.register .bfhButton {
+	float: right;
+}
+
+.new_content .magmaInput input[type=text],
+.new_content .magmaInput input[type=password] {
+	width: 231px;
+}
+
+.new_content label,
+.new_content .magmaLabel {
+	padding: 10px 0 0;
+	font-weight: bold;
+	font-size: 11px;
+}
+
+.new_content a {
+	color: #222;
+	text-decoration: underline;
+}
+
+.magmaFormElementWrapper {
+	padding-bottom: 0;
+}
