@@ -4,26 +4,26 @@ from time import strftime
 
 def ReceiveComponent(self, txn):
     if txn == 'Hello':
-        MemCheckPacket = 'TXN=MemCheck\n'
-        MemCheckPacket += 'memcheck.[]=0\n'
-        MemCheckPacket += 'salt=5\x00'
+        MemCheckPacket = PacketEncoder.SetVar('TXN', 'MemCheck')
+        MemCheckPacket += PacketEncoder.SetVar('memcheck.[]', '0')
+        MemCheckPacket += PacketEncoder.SetVar('salt', '5', True)
 
         MemCheckPacket = PacketEncoder.encode('fsys', MemCheckPacket, 0xC0000000, self.PacketID)
 
-        GetSessionIdPacket = 'TXN=GetSessionId\x00'
+        GetSessionIdPacket = PacketEncoder.SetVar('TXN', 'GetSessionId', True)
         GetSessionIdPacket = PacketEncoder.encode('gsum', GetSessionIdPacket, 0x0, 0)
 
         self.PacketID += 1
         CurrentTime = strftime('%b-%d-%Y %H:%M:%S UTC')
-        HelloPacket = 'curTime=' + CurrentTime + '\n'
-        HelloPacket += 'messengerIp=' + Globals.ServerIP + '\n'
-        HelloPacket += 'messengerPort=13505\n'
-        HelloPacket += 'TXN=Hello\n'
-        HelloPacket += 'domainPartition.subDomain=bfwest-dedicated\n'
-        HelloPacket += 'theaterIp=' + Globals.ServerIP + '\n'
-        HelloPacket += 'theaterPort=' + str(TheaterClientPort) + '\n'
-        HelloPacket += 'domainPartition.domain=eagames\n'
-        HelloPacket += 'activityTimeoutSecs=3600\x00'
+        HelloPacket = PacketEncoder.SetVar('curTime', CurrentTime)
+        HelloPacket += PacketEncoder.SetVar('messengerIp', Globals.ServerIP)
+        HelloPacket += PacketEncoder.SetVar('messengerPort', 13505)
+        HelloPacket += PacketEncoder.SetVar('TXN', 'Hello')
+        HelloPacket += PacketEncoder.SetVar('domainPartition.subDomain', 'bfwest-dedicated')
+        HelloPacket += PacketEncoder.SetVar('theaterIp', Globals.ServerIP)
+        HelloPacket += PacketEncoder.SetVar('theaterPort', TheaterClientPort)
+        HelloPacket += PacketEncoder.SetVar('domainPartition.domain', 'eagames')
+        HelloPacket += PacketEncoder.SetVar('activityTimeoutSecs', 3600, True)
         HelloPacket = PacketEncoder.encode('fsys', HelloPacket, 0xC0000000, self.PacketID)
 
         self.transport.getHandle().sendall(MemCheckPacket)
