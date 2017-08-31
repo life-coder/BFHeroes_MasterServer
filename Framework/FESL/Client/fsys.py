@@ -5,8 +5,8 @@ from time import strftime
 def ReceiveComponent(self, txn):
     if txn == 'Hello':
         MemCheckPacket = PacketEncoder.SetVar('TXN', 'MemCheck')
-        MemCheckPacket += PacketEncoder.SetVar('memcheck.[]', '0')
-        MemCheckPacket += PacketEncoder.SetVar('salt', '5', True)
+        MemCheckPacket += PacketEncoder.SetVar('memcheck.[]', 0)
+        MemCheckPacket += PacketEncoder.SetVar('salt', 5, True)
 
         MemCheckPacket = PacketEncoder.encode('fsys', MemCheckPacket, 0xC0000000, self.PacketID)
 

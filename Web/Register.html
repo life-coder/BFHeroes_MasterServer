@@ -98,7 +98,7 @@
 						<h2>Register</h2>
 					</div>
 
-
+					
 					<div class="clearfix magmaFormElementWrapper magmaInputWrapper">
 						<label class="magmaLabel" for="username">Username</label><span class="magmaInput size-300"><input id="username" name="username" size="300" type="text"></span>
 
@@ -106,6 +106,12 @@
 						</div>
 					</div>
 
+					<div class="clearfix magmaFormElementWrapper magmaInputWrapper">
+						<label class="magmaLabel" for="email">E-Mail</label><span class="magmaInput size-300"><input id="email" name="email" size="300" type="text"></span>
+
+						<div class="magmaAfter">
+						</div>
+					</div>
 
 					<div class="clearfix magmaFormElementWrapper magmaInputWrapper">
 						<label class="magmaLabel" for="password">Password</label><span class="magmaInput size-300"><input id="password" name="password" size="300" type="password"></span>
@@ -162,6 +168,7 @@
 	document.getElementById("register").addEventListener("click", function () {
 	     var xhttp = new XMLHttpRequest();
 	     var username = document.getElementById("username").value;
+		 var email = document.getElementById("email").value;
 	     var password = document.getElementById("password").value;
 	     var password_confirmation = document.getElementById("password2").value;
 	     xhttp.onreadystatechange = function() {
@@ -178,7 +185,7 @@
 	       }
 	     };
 	     xhttp.open("POST", "/api/register", true);
-	     xhttp.send("username="+username+"&password="+password+"&password2="+password_confirmation);
+	     xhttp.send("username="+username+"&email="+email+"&password="+password+"&password2="+password_confirmation);
 	});
 	</script>
 </body>

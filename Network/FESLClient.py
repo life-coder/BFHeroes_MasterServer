@@ -1,7 +1,7 @@
 from twisted.internet.protocol import Protocol
 from Config import ConsoleColor
 from Utils import PacketDecoder
-from Framework.FESL.Client import fsys, acct
+from Framework.FESL.Client import fsys, acct, rank
 
 class HANDLER(Protocol):
     def __init__(self):
@@ -51,5 +51,8 @@ class HANDLER(Protocol):
         elif Command == 'acct':
             self.PacketID += 1
             acct.ReceiveComponent(self, data, TXN)
+        elif Command == 'rank':
+            self.PacketID += 1
+            rank.ReceiveComponent(self, data, TXN)
         else:
             print ConsoleColor('Warning') + '[FESLClient] Warning! Got unknown command (' + Command + '] and unknown TXN (' + TXN + ')!' + ConsoleColor('End')

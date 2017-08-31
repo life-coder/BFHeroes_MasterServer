@@ -24,18 +24,19 @@ class Simple(resource.Resource):
                 return response
 
             account = LoginUser(username)
-
             if account == None:
                 response = '<meta http-equiv="refresh" content="0; url=/" />'
                 return response
 
-            elif account[1] == username and account[2] == password:
+            elif account[1] == username and account[3] == password:
                 SessionID = RandomStringGenerator.Generate(64)
                 SaveWebSession(SessionID, username)
                 response = '<meta http-equiv="set-cookie" content="SessionID=' + SessionID + '; Path=/; ">'
                 response += '<meta http-equiv="refresh" content="0; url=/" />'
 
                 return response
+            else:
+                return '<meta http-equiv="refresh" content="0; url=/" />'
 
         if uri.find('.css') != -1:
             request.setHeader('content-type', 'text/css')
@@ -56,13 +57,18 @@ class Simple(resource.Resource):
             uri += '.html'
 
         try:
+            # Fixed going outside 'Web' Directory
+            uri = uri.replace('..', '')
             file_handler = open('Web' + uri, 'rb')
             response = file_handler.read()
             if uri == '/index.html':
-                launch_arguments = b64encode('+sessionId ' + request.getCookie('SessionID') + ' +magma ' +
-                                             str(GetWebSession(request.getCookie('SessionID'))[
-                                                     0]) + ' +punkbuster 0 +developer 1')
-                response = response.replace('$LaunchGame', 'bfheroes://' + launch_arguments)
+                try:
+                    launch_arguments = b64encode('+sessionId ' + request.getCookie('SessionID') + ' +magma ' +
+                                                 str(GetWebSession(request.getCookie('SessionID'))[
+                                                         0]) + ' +punkbuster 0 +developer 1')
+                    response = response.replace('$LaunchGame', 'bfheroes://' + launch_arguments)
+                except:
+                    response = response.replace('$LaunchGame', '#')
             file_handler.close()
         except:
             request.setResponseCode(404)
@@ -82,6 +88,11 @@ class Simple(resource.Resource):
                 return '{ "status": "err", "code": "username", "message": "' + "You must enter username!" + '", "data": "null" }'
 
             try:
+                email = data.split('email=')[1].split('&')[0]
+            except:
+                return '{ "status": "err", "code": "username", "message": "' + "You must enter email!" + '", "data": "null" }'
+
+            try:
                 password1 = data.split('password=')[1].split('&')[0]
                 password2 = data.split('password2=')[1]
             except:
@@ -93,7 +104,7 @@ class Simple(resource.Resource):
                 return '{ "status": "err", "code": "password2", "message": "' + "Passwords you typed doesn't match!" + '", "data": "null" }'
 
             try:
-                RegisterUser(username, password1)
+                RegisterUser(username, email, password1)
             except:
                 return '{ "status": "err", "code": "username", "message": "' + "This username is already registered!" + '", "data": "null" }'
 
@@ -128,7 +139,7 @@ class Simple(resource.Resource):
             if account == None:
                 return '{ "status": "err", "code": "username", "message": "' + "User not found!" + '", "data": "null" }'
 
-            if account[1] == username and account[2] == password:
+            if account[1] == username and account[3] == password:
                 print ConsoleColor(
                     'Success') + '[WebServer] User ' + username + ' successfully logged in!' + ConsoleColor('End')
                 return '{ "status": "ok", "data": {"redirect": "/api/GetSession?username=' + username + '&password=' + password + '"}, "message": "' + "Hello" + username + "!" + '" }'

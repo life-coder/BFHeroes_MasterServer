@@ -15,6 +15,7 @@ def Prepare():
         command = "CREATE TABLE `Accounts` 	(" \
                   "`AccountID`   INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, " \
                   "`Username`	TEXT NOT NULL UNIQUE," \
+                  "`EMail`     TEXT NOT NULL UNIQUE," \
                   "`Password`   TEXT NOT NULL" \
                   ");"
 
@@ -40,10 +41,10 @@ def Prepare():
         cursor.execute(command)
         database.commit()
 
-def RegisterUser(username, password):
+def RegisterUser(username, email, password):
     database = sqlite3.connect(DatabaseFileLocation)
     cursor = database.cursor()
-    cursor.execute("INSERT INTO Accounts (Username,Password) VALUES (?,?)", (username, password,))
+    cursor.execute("INSERT INTO Accounts (Username,EMail,Password) VALUES (?,?,?)", (username, email, password,))
     database.commit()
 
 def LoginUser(username):
@@ -82,4 +83,10 @@ def GetUserName(ID):
     database = sqlite3.connect(DatabaseFileLocation)
     cursor = database.cursor()
     cursor.execute("SELECT Username FROM `Accounts` WHERE AccountID = ?", (ID,))
+    return cursor.fetchone()[0]
+
+def GetEmail(ID):
+    database = sqlite3.connect(DatabaseFileLocation)
+    cursor = database.cursor()
+    cursor.execute("SELECT EMail FROM `Accounts` WHERE AccountID = ?", (ID,))
     return cursor.fetchone()[0]

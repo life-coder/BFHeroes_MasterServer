@@ -31,6 +31,12 @@ def PacketLength(data):
             ascii = slen >> ((4 - 1 - loop) << 3)
             ascii_chars += chr(ascii)
             loop += 1
+
+    # Bug fix if generated packet length bytes is higher than 4
+
+    if len(ascii_chars) > 4:
+        additional_characters = len(ascii_chars) - 4
+        ascii_chars = ascii_chars[additional_characters:]
     return ascii_chars
 
 def CreateChecksum(data, value):
