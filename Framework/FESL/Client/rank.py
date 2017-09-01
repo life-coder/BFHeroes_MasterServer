@@ -94,5 +94,9 @@ def ReceiveComponent(self, data, txn):
         GetStatsForOwnersPacket = PacketEncoder.encode('acct', GetStatsForOwnersPacket, 0xC0000000, self.PacketID)
         self.transport.getHandle().sendall(GetStatsForOwnersPacket)
 
+    elif txn == 'UpdateStats':
+        # Doesn't update any Stats
+        UpdateStatsPacket = PacketEncoder.encode('rank', PacketEncoder.SetVar('TXN', 'UpdateStats'), 0xC0000000, self.PacketID)
+        self.transport.getHandle().sendall(UpdateStatsPacket)
     else:
         print ConsoleColor('Warning') + '[FESLClient][rank] Got unknown TXN (' + txn + ')' + ConsoleColor('End')

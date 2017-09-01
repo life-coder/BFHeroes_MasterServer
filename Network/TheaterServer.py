@@ -1,10 +1,13 @@
 from twisted.internet.protocol import Protocol
 from Config import ConsoleColor
+from Utils import PacketDecoder
+from Framework.Theater.Server import CONN, USER, CGAM, UBRA, UGAM
 
 class HANDLER(Protocol):
     def __init__(self):
         self.DATABUFF = ''
         self.GAMEOBJ = None
+        self.PacketID = 0
 
     def timeoutConnection(self):
         print ConsoleColor('Warning') + '[TheaterServer] Closed connection to ' + self.ip + ':' + str(
@@ -35,4 +38,23 @@ class HANDLER(Protocol):
         return
 
     def dataReceived(self, data):
-        print '[TheaterServer] ' + str(data.split())
+        try:
+            Command = PacketDecoder.decode(data).GetCommand()
+            self.PacketID += 1
+        except:
+            Command = 'null'
+
+        if Command == 'CONN':
+            CONN.ReceiveComponent(self, data)
+        elif Command == 'USER':
+            USER.ReceiveComponent(self, data)
+        elif Command == 'CGAM':
+            CGAM.ReceiveComponent(self, data)
+        elif Command == 'UBRA':
+            UBRA.ReceiveComponent(self, data)
+        elif Command == 'UGAM':
+            UGAM.ReceiveComponent(self, data)
+        else:
+            print ConsoleColor(
+                'Warning') + '[TheaterServer] Warning! Got unknown command (' + Command + ']!' + ConsoleColor(
+                'End')

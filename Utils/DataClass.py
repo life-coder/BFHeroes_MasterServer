@@ -8,3 +8,14 @@ class BF2Client:
     LoginKey = ''
     NetworkInt = None
     IsOnline = False
+
+class BF2Server:
+    Type = 'Server'
+    UserID = 0
+    LoginKey = ''
+    NetworkInt = None
+    IsOnline = False
+
+    # Server Data
+    AttrNames = []
+    AttrData = []

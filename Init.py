@@ -45,7 +45,7 @@ def Start():
         factory = Factory()
         factory.protocol = FESLClient.HANDLER
         reactor.listenSSL(FESLClientPort, factory, SSLContext)
-        print ConsoleColor('Success') + '[FESLClient] Started listening at port: ' + str(FESLClientPort)
+        print ConsoleColor('Success') + '[FESLClient] Started listening at port: ' + str(FESLClientPort) + ConsoleColor('End')
     except Exception, BindError:
         print ConsoleColor('Error') + 'Fatal Error! Cannot bind socket to port: ' + str(FESLClientPort)
         print 'Make sure that other programs are not currently listening to this port!'
@@ -57,8 +57,8 @@ def Start():
     try:
         factory = Factory()
         factory.protocol = FESLServer.HANDLER
-        reactor.listenTCP(FESLServerPort, factory)
-        print ConsoleColor('Success') + '[FESLServer] Started listening at port: ' + str(FESLServerPort)
+        reactor.listenSSL(FESLServerPort, factory, SSLContext)
+        print ConsoleColor('Success') + '[FESLServer] Started listening at port: ' + str(FESLServerPort) + ConsoleColor('End')
     except Exception, BindError:
         print ConsoleColor('Error') + 'Fatal Error! Cannot bind socket to port: ' + str(FESLServerPort)
         print 'Make sure that other programs are not currently listening to this port!'
@@ -71,7 +71,7 @@ def Start():
         factory = Factory()
         factory.protocol = TheaterClient.HANDLER
         reactor.listenTCP(TheaterClientPort, factory)
-        print ConsoleColor('Success') + '[TheaterClient] Started listening at port: ' + str(TheaterClientPort)
+        print ConsoleColor('Success') + '[TheaterClient] Started listening at port: ' + str(TheaterClientPort) + ConsoleColor('End')
     except Exception, BindError:
         print ConsoleColor('Error') + 'Fatal Error! Cannot bind socket to port: ' + str(TheaterClientPort)
         print 'Make sure that other programs are not currently listening to this port!'
@@ -84,7 +84,7 @@ def Start():
         factory = Factory()
         factory.protocol = TheaterServer.HANDLER
         reactor.listenTCP(TheaterServerPort, factory)
-        print ConsoleColor('Success') + '[TheaterServer] Started listening at port: ' + str(TheaterServerPort)
+        print ConsoleColor('Success') + '[TheaterServer] Started listening at port: ' + str(TheaterServerPort) + ConsoleColor('End')
     except Exception, BindError:
         print ConsoleColor('Error') + 'Fatal Error! Cannot bind socket to port: ' + str(TheaterServerPort)
         print 'Make sure that other programs are not currently listening to this port!'
@@ -96,7 +96,7 @@ def Start():
     try:
         site = server.Site(WebServer.Simple())
         reactor.listenTCP(WebServerPort, site)
-        print ConsoleColor('Success') + '[WebServer] Started listening at port: ' + str(WebServerPort)
+        print ConsoleColor('Success') + '[WebServer] Started listening at port: ' + str(WebServerPort) + ConsoleColor('End')
     except Exception, BindError:
         print ConsoleColor('Error') + 'Fatal Error! Cannot bind socket to port: ' + str(WebServerPort)
         print 'Make sure that other programs are not currently listening to this port!'
@@ -108,7 +108,7 @@ def Start():
     try:
         site = server.Site(GameWebServer.Simple())
         reactor.listenTCP(GameWebServerPort, site)
-        print ConsoleColor('Success') + '[GameWebServer] Started listening at port: ' + str(GameWebServerPort)
+        print ConsoleColor('Success') + '[GameWebServer] Started listening at port: ' + str(GameWebServerPort) + ConsoleColor('End')
     except Exception, BindError:
         print ConsoleColor('Error') + 'Fatal Error! Cannot bind socket to port: ' + str(GameWebServerPort)
         print 'Make sure that other programs are not currently listening to this port!'
@@ -120,7 +120,7 @@ def Start():
     try:
         site = server.Site(SecureWebServer.Simple())
         reactor.listenSSL(SecureWebServerPort, site, SSLContext)
-        print ConsoleColor('Success') + '[SecureWebServer] Started listening at port: ' + str(SecureWebServerPort)
+        print ConsoleColor('Success') + '[SecureWebServer] Started listening at port: ' + str(SecureWebServerPort) + ConsoleColor('End')
     except Exception, BindError:
         print ConsoleColor('Error') + 'Fatal Error! Cannot bind socket to port: ' + str(SecureWebServerPort)
         print 'Make sure that other programs are not currently listening to this port!'
