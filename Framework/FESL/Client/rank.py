@@ -81,7 +81,7 @@ def ReceiveComponent(self, data, txn):
             key = 0
             while key != RequestedKeysNumber:
                 GetStatsForOwnersPacket += PacketEncoder.SetVar('stats.' + str(loop) + '.stats.' + str(key) + '.key', RequestedKeysNames[key])
-                GetStatsForOwnersPacket += PacketEncoder.SetVar('stats.' + str(loop) + '.stats.' + str(key) + '.value', 0)
+                GetStatsForOwnersPacket += PacketEncoder.SetVar('stats.' + str(loop) + '.stats.' + str(key) + '.value', 1)
                 GetStatsForOwnersPacket += PacketEncoder.SetVar('stats.' + str(loop) + '.stats.' + str(key) + '.text', '')
                 key += 1
 
