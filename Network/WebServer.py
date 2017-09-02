@@ -1,4 +1,6 @@
-from twisted.web import resource
+from twisted.web import html, resource
+from twisted.web.util import redirectTo
+from twisted.web.server import Session
 from Config import ConsoleColor
 from Framework.Database import RegisterUser, LoginUser, SaveWebSession, GetWebSession
 from Utils import RandomStringGenerator
@@ -9,10 +11,33 @@ class Simple(resource.Resource):
 
     def render_GET(self, request):
         uri = request.uri
+        session = request.getSession()
 
         if uri == '/':
             uri = '/index'
 
+        if uri == '/api/status':
+            request.setHeader('content-type', 'application/json')
+            login = "false"
+            data = ""
+            if hasattr(session, 'username'):
+                login = "true"
+                try:
+                    launch_arguments = b64encode('+sessionId ' + request.getCookie('SessionID') + ' +magma ' +
+                                                 str(GetWebSession(request.getCookie('SessionID'))[
+                                                         0]) + ' +punkbuster 0 +developer 1')
+                    data = 'bfheroes://' + launch_arguments
+                except:
+                    data = '#'
+
+                return '{ "status": "ok", "login": ' + login + ', "data": {"token": "' + data + '", "username": "' +  html.escape(session.username) + '"}}'
+            return '{ "status": "ok", "login": ' + login + ', "data": {}}'
+
+        if uri == '/Logout':
+            if hasattr(session, 'username'):
+                request.getSession().expire()
+                session.username = ""
+            return redirectTo("/")
         if uri.split('?')[0] == '/api/GetSession':
             data = uri.split('?')[1]
 
@@ -78,9 +103,14 @@ class Simple(resource.Resource):
 
     def render_POST(self, request):
         print '[WebServer][Post] ' + request.uri
+        session = request.getSession()
 
         if request.uri == '/api/register':
+            request.setHeader('content-type', 'application/json')
             data = request.content.getvalue()
+
+            if hasattr(session, 'username'):
+                return '{ "status": "err", "code": "username", "message": "You have already an account!", "data": "null" }'
 
             try:
                 username = data.split('username=')[1].split('&')[0]
@@ -110,11 +140,15 @@ class Simple(resource.Resource):
 
             print ConsoleColor(
                 'Success') + '[WebServer] Successfully registered new user! (' + username + ')' + ConsoleColor('End')
+            session.username = username
             return '{ "status": "ok", "data": {"redirect": "/api/GetSession?username=' + username + '&password=' + password1 + '"}, "message": "' + "Hello" + username + "!" + '" }'
 
         if request.uri == '/api/login':
             request.setHeader('content-type', 'application/json')
             data = request.content.getvalue()
+
+            if hasattr(session, 'username'):
+                return '{ "status": "err", "code": "username", "message": "You are already loggedom!", "data": "null" }'
 
             try:
                 if len(data.split('&')[0].split('username=')[1]) == 0:
@@ -142,4 +176,5 @@ class Simple(resource.Resource):
             if account[1] == username and account[3] == password:
                 print ConsoleColor(
                     'Success') + '[WebServer] User ' + username + ' successfully logged in!' + ConsoleColor('End')
+                session.username = username
                 return '{ "status": "ok", "data": {"redirect": "/api/GetSession?username=' + username + '&password=' + password + '"}, "message": "' + "Hello" + username + "!" + '" }'
