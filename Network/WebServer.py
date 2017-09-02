@@ -37,7 +37,7 @@ class Simple(resource.Resource):
             if hasattr(session, 'username'):
                 request.getSession().expire()
                 session.username = ""
-            return redirectTo("/")
+            return redirectTo("/", request)
         if uri.split('?')[0] == '/api/GetSession':
             data = uri.split('?')[1]
 
