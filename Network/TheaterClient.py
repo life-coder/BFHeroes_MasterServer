@@ -1,7 +1,7 @@
 from twisted.internet.protocol import Protocol
 from Config import ConsoleColor
 from Utils import PacketDecoder
-from Framework.Theater.Client import CONN, USER
+from Framework.Theater.Client import CONN, USER, GDAT, ECHL, EGAM
 
 class HANDLER(Protocol):
     def __init__(self):
@@ -38,8 +38,6 @@ class HANDLER(Protocol):
         return
 
     def dataReceived(self, data):
-        print '[TheaterClient] ' + str(data.split())
-
         try:
             Command = PacketDecoder.decode(data).GetCommand()
             self.PacketID += 1
@@ -50,6 +48,12 @@ class HANDLER(Protocol):
             CONN.ReceiveComponent(self, data)
         elif Command == 'USER':
             USER.ReceiveComponent(self, data)
+        elif Command == 'GDAT':
+            GDAT.ReceiveComponent(self, data)
+        elif Command == 'ECHL':
+            ECHL.ReceiveComponent(self, data)
+        elif Command == 'EGAM':
+            EGAM.ReceiveComponent(self, data)
         else:
             print ConsoleColor(
                 'Warning') + '[TheaterClient] Warning! Got unknown command (' + Command + ']!' + ConsoleColor(

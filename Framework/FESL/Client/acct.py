@@ -18,7 +18,7 @@ def ReceiveComponent(self, data, txn):
         # Save client connection info
         if self.GAMEOBJ == None:
             self.GAMEOBJ = DataClass.BF2Client()
-            self.GAMEOBJ.NetworkInt = self.transport
+            self.GAMEOBJ.FESLNetworkInt = self.transport
             Globals.Clients.append(self.GAMEOBJ)
 
         self.GAMEOBJ.IsOnline = True

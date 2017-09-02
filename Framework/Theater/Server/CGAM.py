@@ -15,6 +15,11 @@ def ReceiveComponent(self, data):
         self.GAMEOBJ.AttrData.append(NewData[loop].split('=')[1])
         loop += 1
 
+    # Get ExtPort
+    self.GAMEOBJ.EXTPORT = self.GAMEOBJ.GetData('PORT')
+
+    GameID = Globals.CurrentGameID
+    self.GAMEOBJ.GameID = GameID
     CGAMPacket = PacketEncoder.SetVar('TID', self.PacketID)
     CGAMPacket += PacketEncoder.SetVar('LID', '1')
     CGAMPacket += PacketEncoder.SetVar('UGID', PacketDecoder.decode(data).GetVar('UGID'))
@@ -24,7 +29,7 @@ def ReceiveComponent(self, data):
     CGAMPacket += PacketEncoder.SetVar('SECRET', RandomStringGenerator.Generate(7))
     CGAMPacket += PacketEncoder.SetVar('JOIN', PacketDecoder.decode(data).GetVar('JOIN'))
     CGAMPacket += PacketEncoder.SetVar('J', PacketDecoder.decode(data).GetVar('JOIN'))
-    CGAMPacket += PacketEncoder.SetVar('GID', Globals.CurrentGameID)
+    CGAMPacket += PacketEncoder.SetVar('GID', GameID)
     Globals.CurrentGameID += 1
     CGAMPacket = PacketEncoder.encode('CGAM', CGAMPacket, 0x0, 0)
     self.transport.getHandle().sendall(CGAMPacket)

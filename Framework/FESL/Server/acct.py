@@ -13,7 +13,7 @@ def ReceiveComponent(self, data, txn):
         # Save client connection info
         if self.GAMEOBJ == None:
             self.GAMEOBJ = DataClass.BF2Server()
-            self.GAMEOBJ.NetworkInt = self.transport
+            self.GAMEOBJ.FESLNetworkInt = self.transport
             Globals.Servers.append(self.GAMEOBJ)
 
         if ServerPassword == None:

@@ -34,4 +34,4 @@ def ReceiveComponent(self, data):
             self.GAMEOBJ.AttrData.append(NewKeysValues[loop])
         loop += 1
 
-    print ConsoleColor('Success') + '[TheaterServer][UGAM] Successfully update game info!' + ConsoleColor('End')
+    print ConsoleColor('Success') + '[TheaterServer][UGAM] Successfully updated game info!' + ConsoleColor('End')

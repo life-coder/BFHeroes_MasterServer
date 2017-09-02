@@ -1,4 +1,5 @@
 from Utils import PacketEncoder, PacketDecoder, Globals
+import socket, struct
 
 def ReceiveComponent(self, data):
     LoginKey = PacketDecoder.decode(data).GetVar('LKEY')
@@ -9,6 +10,8 @@ def ReceiveComponent(self, data):
     loop = 0
     while ServersCount != loop:
         CurrentLoginKey = Globals.Servers[loop].LoginKey
+        self.GAMEOBJ = Globals.Servers[loop]
+        self.GAMEOBJ.TheaterNetworkInt = self.transport
 
         if CurrentLoginKey != LoginKey:
             CorrectlyLoggedIn = False
@@ -20,6 +23,8 @@ def ReceiveComponent(self, data):
             break
 
     if CorrectlyLoggedIn == True:
+        packedIP = socket.inet_aton(self.transport.getPeer().host)
+        self.GAMEOBJ.EXTIP = struct.unpack('!L', packedIP)[0]
         USERPacket = PacketEncoder.SetVar('TID', self.PacketID)
         USERPacket += PacketEncoder.SetVar('NAME', 'BFHeroesServerPC')
         USERPacket += PacketEncoder.SetVar('CID', '', True)
