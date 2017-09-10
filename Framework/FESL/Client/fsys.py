@@ -29,5 +29,26 @@ def ReceiveComponent(self, txn):
         self.transport.getHandle().sendall(MemCheckPacket)
         self.transport.getHandle().sendall(GetSessionIdPacket)
         self.transport.getHandle().sendall(HelloPacket)
+
+    elif txn == 'MemCheck':
+        # Unneeded
+        pass
+
+    elif txn == 'Goodbye':
+        # Unneeded
+        pass
+
+    elif txn == 'GetPingSites':
+        self.PacketID += 1
+        GetPingSitesPacket = PacketEncoder.SetVar('TXN', 'GetPingSites')
+        GetPingSitesPacket += PacketEncoder.SetVar('minPingSitesToPing', 2)
+        GetPingSitesPacket += PacketEncoder.SetVar('pingSites.[]', 2)
+        GetPingSitesPacket += PacketEncoder.SetVar('pingSites.0.addr', Globals.ServerIP)
+        GetPingSitesPacket += PacketEncoder.SetVar('pingSites.0.name', 'gva')
+        GetPingSitesPacket += PacketEncoder.SetVar('pingSites.0.type', 0)
+        GetPingSitesPacket += PacketEncoder.SetVar('pingSites.1.addr', Globals.ServerIP)
+        GetPingSitesPacket += PacketEncoder.SetVar('pingSites.1.name', 'nrt')
+        GetPingSitesPacket += PacketEncoder.SetVar('pingSites.1.type', 0)
+        GetPingSitesPacket += PacketEncoder.encode('fsys', GetPingSitesPacket, 0xC0000000, self.PacketID)
     else:
         print ConsoleColor('Warning') + '[FESLClient][fsys] Got unknown TXN (' + txn + ')' + ConsoleColor('End')

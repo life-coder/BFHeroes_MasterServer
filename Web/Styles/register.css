@@ -203,6 +203,7 @@ form.register .bfhButton {
 }
 
 .new_content .magmaInput input[type=text],
+.new_content .magmaInput input[type=date],
 .new_content .magmaInput input[type=password] {
 	width: 231px;
 }

@@ -1,6 +1,6 @@
 from Config import ConsoleColor
 from Utils import PacketEncoder, PacketDecoder, DataClass, Globals, RandomStringGenerator
-from Framework.Database import GetWebSession, GetUserName, GetEmail, GetAccountID
+from Framework.Database import GetWebSession, GetUserName, GetEmail, GetHeroes, GetBirthday, GetHeroIDByName
 
 def ReceiveComponent(self, data, txn):
     if txn == 'NuLogin':
@@ -24,6 +24,7 @@ def ReceiveComponent(self, data, txn):
         self.GAMEOBJ.IsOnline = True
 
         self.GAMEOBJ.SessionID = SessionID
+        self.GAMEOBJ.Username = Username
         self.GAMEOBJ.UserID = AccountID
         self.GAMEOBJ.EMail = email
 
@@ -58,13 +59,16 @@ def ReceiveComponent(self, data, txn):
         GetPersonasPacket = PacketEncoder.SetVar('TXN', 'NuGetPersonas')
 
         # For now I'm using static variables.
-        GetPersonasPacket += PacketEncoder.SetVar('personas.0', 'TestSoldier1')
-        GetPersonasPacket += PacketEncoder.SetVar('personas.1', 'TestSoldier2')
-        GetPersonasPacket += PacketEncoder.SetVar('personas.2', 'TestSoldier3')
-        GetPersonasPacket += PacketEncoder.SetVar('personas.3', 'TestSoldier4')
-        GetPersonasPacket += PacketEncoder.SetVar('personas.4', 'TestSoldier5')
-        GetPersonasPacket += PacketEncoder.SetVar('personas.5', 'TestSoldier6')
-        GetPersonasPacket += PacketEncoder.SetVar('personas.[]', 6, True)
+        HeroCount = len(GetHeroes(self.GAMEOBJ.UserID))
+        Heroes = GetHeroes(self.GAMEOBJ.UserID)
+        loop = 0
+
+        while loop != HeroCount:
+            CurrentHero = Heroes[loop]
+            HeroName = CurrentHero[2]
+            GetPersonasPacket += PacketEncoder.SetVar('personas.' + str(loop), HeroName)
+            loop += 1
+        GetPersonasPacket += PacketEncoder.SetVar('personas.[]', len(GetHeroes(self.GAMEOBJ.UserID)), True)
         GetPersonasPacket = PacketEncoder.encode('acct', GetPersonasPacket, 0xC0000000, self.PacketID)
         self.transport.getHandle().sendall(GetPersonasPacket)
 
@@ -73,14 +77,14 @@ def ReceiveComponent(self, data, txn):
 
         GetAccountPacket = PacketEncoder.SetVar('TXN', 'NuGetAccount')
 
-        # For now I'm using static variables.
-        GetAccountPacket += PacketEncoder.SetVar('heroName', 'TestAccount')
+        GetAccountPacket += PacketEncoder.SetVar('heroName', self.GAMEOBJ.Username)
         GetAccountPacket += PacketEncoder.SetVar('nuid', self.GAMEOBJ.EMail)
 
         # Birthday date
-        GetAccountPacket += PacketEncoder.SetVar('DOBDay', '1')
-        GetAccountPacket += PacketEncoder.SetVar('DOBMonth', '1')
-        GetAccountPacket += PacketEncoder.SetVar('DOBYear', '2017')
+        Birthday = GetBirthday(self.GAMEOBJ.UserID).split('-')
+        GetAccountPacket += PacketEncoder.SetVar('DOBDay', Birthday[0])
+        GetAccountPacket += PacketEncoder.SetVar('DOBMonth', Birthday[1])
+        GetAccountPacket += PacketEncoder.SetVar('DOBYear', Birthday[2])
 
         GetAccountPacket += PacketEncoder.SetVar('userId', self.GAMEOBJ.UserID)
 
@@ -97,14 +101,17 @@ def ReceiveComponent(self, data, txn):
     elif txn == 'NuLookupUserInfo':
         # Load Soldiers info
         RequestedPersonas = int(PacketDecoder.decode(data).GetVar('userInfo.[]'))
+
         loop = 0
 
         LookupUserInfoPacket = PacketEncoder.SetVar('TXN', 'NuLookupUserInfo')
 
         while loop != RequestedPersonas:
-            LookupUserInfoPacket += PacketEncoder.SetVar('userInfo.' + str(loop) + '.userName', 'TestSoldier' + str(loop + 1))
-            LookupUserInfoPacket += PacketEncoder.SetVar('userInfo.' + str(loop) + '.userId', loop + 1)
-            LookupUserInfoPacket += PacketEncoder.SetVar('userInfo.' + str(loop) + '.masterUserId', loop + 1)
+            CurrentHero = PacketDecoder.decode(data).GetVar('userInfo.' + str(loop) + '.userName')
+            HeroID = GetHeroIDByName(CurrentHero)
+            LookupUserInfoPacket += PacketEncoder.SetVar('userInfo.' + str(loop) + '.userName', CurrentHero)
+            LookupUserInfoPacket += PacketEncoder.SetVar('userInfo.' + str(loop) + '.userId', HeroID)
+            LookupUserInfoPacket += PacketEncoder.SetVar('userInfo.' + str(loop) + '.masterUserId', HeroID)
             LookupUserInfoPacket += PacketEncoder.SetVar('userInfo.' + str(loop) + '.namespace', 'MAIN')
             LookupUserInfoPacket += PacketEncoder.SetVar('userInfo.' + str(loop) + '.xuid', 24)
             loop += 1

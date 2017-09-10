@@ -1,69 +1,1411 @@
 body.stripped {
- background: url(/Images/Backgrounds/register_bg.jpg) no-repeat center top !important;
+	background: url(/Images/Backgrounds/register_bg.jpg) no-repeat center top !important;
 }
 .steps {
- float: left;
- height: 39px;
- margin-top: 2px;
- position: relative;
- display: block;
- font-family: 'HeaderFont', Arial, sans-serif;
- color: #fff;
- text-shadow: 2px 1px 0 black, 2px 1px 0 black, -2px 1px 0 black, -2px -1px 0 black, 2px -1px 0 black, 1px 2px 0 black, 1px 2px 0 black, -1px 2px 0 black, -1px -2px 0 black, 1px -2px 0 black, 2px 2px 0 black, 2px 2px 0 black, -2px 2px 0 black, -2px -2px 0 black, 2px -2px 0 black, 1px 1px 0 black, 1px 1px 0 black, -1px 1px 0 black, -1px -1px 0 black, 1px -1px 1px black;
- font-size: 1.6em;
- text-transform: lowercase;
+	float: left;
+	height: 39px;
+	margin-top: 2px;
+	position: relative;
+	display: block;
+	font-family: 'HeaderFont', Arial, sans-serif;
+	color: #fff;
+	text-shadow: 2px 1px 0 black, 2px 1px 0 black, -2px 1px 0 black, -2px -1px 0 black, 2px -1px 0 black, 1px 2px 0 black, 1px 2px 0 black, -1px 2px 0 black, -1px -2px 0 black, 1px -2px 0 black, 2px 2px 0 black, 2px 2px 0 black, -2px 2px 0 black, -2px -2px 0 black, 2px -2px 0 black, 1px 1px 0 black, 1px 1px 0 black, -1px 1px 0 black, -1px -1px 0 black, 1px -1px 1px black;
+	font-size: 1.6em;
+	text-transform: lowercase;
 }
+
 .steps .index {
- margin-right: 5px;
+	margin-right: 5px;
 }
+
 .steps li {
- display: block;
- float: left;
- margin: 0 1px;
- position: relative;
+	display: block;
+	float: left;
+	margin: 0 1px;
+	position: relative;
 }
-.steps li > span {
- display: block;
- float: left;
- height: 39px;
- margin: 0 1px;
- position: relative;
- line-height: 36px;
- padding: 0 25px;
- opacity: 0.7;
+
+.steps li>span {
+	display: block;
+	float: left;
+	height: 39px;
+	margin: 0 1px;
+	position: relative;
+	line-height: 36px;
+	padding: 0 25px;
+	opacity: 0.7;
 }
+
 .steps li.current {
- background: url(/Images/Registration/step_bg.png) no-repeat;
- background-color: #501515;
- border: 2px solid #000;
- border-width: 0 2px 0 0;
- margin: 0;
+	background: url(/Images/Registration/step_bg.png) no-repeat;
+	background-color: #501515;
+	border: 2px solid #000;
+	border-width: 0 2px 0 0;
+	margin: 0;
 }
-.steps li.current + li {
- border-left: 1px solid #000;
- margin-left: 0;
+
+.steps li.current+li {
+	border-left: 1px solid #000;
+	margin-left: 0;
 }
-.steps li.current + li > span {
- border-left: 1px solid #b9453e;
- margin-left: 0;
+
+.steps li.current+li>span {
+	border-left: 1px solid #b9453e;
+	margin-left: 0;
 }
-.steps li.current > span {
- opacity: 1;
+
+.steps li.current>span {
+	opacity: 1;
 }
+
+
 .go_to_site {
- background: #8b342f;
- border-bottom: 1px solid #b9453e;
- box-shadow: 0 0 5px 3px black;
- -moz-box-shadow: 0 0 5px 3px black;
- color: #fff;
- display: block;
- font-weight: bold;
- height: 25px;
- line-height: 25px;
- margin: 0 auto;
- text-align: center;
- text-transform: uppercase;
- z-index: 90;
- position: absolute;
- width: 100%;
+	background: #8b342f;
+	border-bottom: 1px solid #b9453e;
+	box-shadow: 0 0 5px 3px black;
+	-moz-box-shadow: 0 0 5px 3px black;
+	color: #fff;
+	display: block;
+	font-weight: bold;
+	height: 25px;
+	line-height: 25px;
+	margin: 0 auto;
+	text-align: center;
+	text-transform: uppercase;
+	z-index: 90;
+	position: absolute;
+	width: 100%;
+}
+
+
+#createHero {
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	padding: 3px;
+	position: relative;
+	z-index: 3;
+	margin: 0 auto;
+	width: 852px;
+	position: relative;
+}
+
+#createHero>.inner {
+	background: url(/Images/Common/spatterTop.png) left top no-repeat #c4baa6;
+	background: url(/Images/Common/spatterTop.png) left top no-repeat, url(/Images/Common/spatterTop.png) right top no-repeat #c4baa6;
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	box-shadow: 0 0 0 3px black;
+	-moz-box-shadow: 0 0 0 3px black;
+	position: relative;
+	z-index: 1;
+}
+
+#createHero:before,
+#createHero:after {
+	background: url(/Images/Common/fullShadow.png) no-repeat left top;
+	content: '';
+	height: 134px;
+	position: absolute;
+	width: 840px;
+}
+
+#createHero:before {
+	right: -5px;
+	top: -13px;
+}
+
+#createHero:after {
+	background-position: left bottom;
+	left: -5px;
+	bottom: -14px;
+}
+
+#createHero>.inner {
+	min-height: 120px;
+}
+
+#createHero table {
+	display: none;
+}
+
+#createHero>.inner {
+	background: url(/Images/BarberShop/bg.jpg) no-repeat -1px -1px;
+	padding: 23px 38px 0 459px;
+	height: 504px;
+}
+
+#createHero .heroType {
+	background: no-repeat;
+}
+
+#createHero.selectedFaction2 .heroType {
+	background-image: url(/Images/BarberShop/royal_bg.png);
+}
+
+#createHero.selectedFaction2 .characteristics .faction1 {
+	display: none;
+}
+
+#createHero.selectedFaction2.selectedHeroClass0 .preview .doll {
+	background-image: url(/Images/BarberShop/royalCommando.png);
+}
+
+#createHero.selectedFaction2.selectedHeroClass1 .preview .doll {
+	background-image: url(/Images/BarberShop/royalSoldier.png);
+}
+
+#createHero.selectedFaction2.selectedHeroClass2 .preview .doll {
+	background-image: url(/Images/BarberShop/royalGunner.png);
+}
+
+#createHero.selectedFaction1 .heroType {
+	background-image: url(/Images/BarberShop/national_bg.png);
+}
+
+#createHero.selectedFaction1 .preview .face {
+	left: 105px;
+	top: 19px;
+}
+
+#createHero.selectedFaction1 .heroClass>li {
+	background-image: url(/Images/BarberShop/icon_national_classes.png);
+}
+
+#createHero.selectedFaction1 .characteristics .faction2 {
+	display: none;
+}
+
+#createHero.selectedFaction1.selectedHeroClass0 .preview .doll {
+	background-image: url(/Images/BarberShop/nationalCommando.png);
+}
+
+#createHero.selectedFaction1.selectedHeroClass1 .preview .doll {
+	background-image: url(/Images/BarberShop/nationalSoldier.png);
+}
+
+#createHero.selectedFaction1.selectedHeroClass2 .preview .doll {
+	background-image: url(/Images/BarberShop/nationalGunner.png);
+}
+
+#createHero.barbershop h1 {
+	background: url(/Images/BarberShop/barbershop_bg.png) no-repeat;
+	margin: 0;
+	height: 57px;
+	line-height: 50px;
+	text-align: center;
+	font-size: 2.9em;
+	text-transform: lowercase;
+}
+
+#createHero .faction {
+	height: 47px;
+	position: relative;
+}
+
+#createHero .faction .faction2 {
+	background: url(/Images/BarberShop/faction_royal.png) no-repeat;
+	height: 67px;
+	width: 200px;
+	position: absolute;
+	top: -22px;
+	left: -30px;
+}
+
+#createHero .faction .faction1 {
+	background: url(/Images/BarberShop/faction_national.png) no-repeat;
+	height: 67px;
+	width: 200px;
+	position: absolute;
+	top: -22px;
+	right: -34px;
+}
+
+#createHero .heroClass {
+	clear: both;
+	padding: 12px 0 12px 13px;
+	overflow: hidden;
+}
+
+#createHero .heroClass>li {
+	float: left;
+	height: 79px;
+	width: 82px;
+	margin-left: 20px;
+	background: url(/Images/BarberShop/icon_royal_classes.png) no-repeat;
+}
+
+#createHero .heroClass .heroClass0 {
+	background-position: -166px top;
+}
+
+#createHero .heroClass .heroClass0:hover {
+	background-position: -166px bottom;
+}
+
+#createHero .heroClass .heroClass1 {
+	background-position: 0 top;
+}
+
+#createHero .heroClass .heroClass1:hover {
+	background-position: 0 bottom;
+}
+
+#createHero .heroClass .heroClass2 {
+	background-position: -83px top;
+}
+
+#createHero .heroClass .heroClass2:hover {
+	background-position: -83px bottom;
+}
+
+#createHero.selectedHeroClass0 .heroClass0 {
+	background-position: -166px bottom;
+}
+
+#createHero.selectedHeroClass1 .heroClass1 {
+	background-position: 0 bottom;
+}
+
+#createHero.selectedHeroClass2 .heroClass2 {
+	background-position: -83px bottom;
+}
+
+#createHero .characteristics {
+	background: url(/Images/BarberShop/characteristics.png) no-repeat;
+}
+
+#createHero .hairSelector {
+	background: url(/Images/BarberShop/hairSelector.png) no-repeat;
+	clear: both;
+	height: 235px;
+	margin: -3px 2px 0;
+	position: relative;
+}
+
+#createHero .hairSelector.baseMSGAppearanceHairStyleStats {
+	background-position: right top;
+}
+
+#createHero .hairSelector.baseMSGAppearanceHairStyleStats .facialHair ul {
+	display: none;
+}
+
+#createHero .hairSelector.facial_ui_name .hair ul {
+	display: none;
+}
+
+#createHero .hairSelector>li {
+	position: absolute;
+	top: 48px;
+	left: 0;
+	width: 350px;
+}
+
+#createHero .hairSelector h2 {
+	background: url(/Images/BarberShop/hairSelectorIcons.png) no-repeat;
+	width: 132px;
+	height: 42px;
+	margin: 0;
+	position: absolute;
+	top: -48px;
+}
+
+#createHero .hairSelector .hair h2 {
+	background-position: center -37px;
+	left: 40px;
+}
+
+#createHero .hairSelector .facialHair h2 {
+	background-position: center 3px;
+	right: 40px;
+}
+
+#createHero .hairSelector ul {
+	text-align: center;
+}
+
+#createHero .hairSelector .facialHair li,
+#createHero .hairSelector .hair li {
+	float: left;
+	height: 92px;
+	width: 69px;
+	overflow: hidden;
+	position: relative;
+}
+
+#createHero .hairSelector .facialHair li:hover,
+#createHero .hairSelector .hair li:hover {
+	background: url(/Images/BarberShop/icon_bg.png) no-repeat 5px 10px;
+}
+
+#createHero .hairSelector .facialHair .facialHair128 .icon_facialHair {
+	background-position: -345px -186px;
+}
+
+#createHero .hairSelector .facialHair .facialHair104 .icon_facialHair {
+	background-position: -345px -186px;
+}
+
+#createHero .hairSelector .facialHair .facialHair126 .icon_facialHair {
+	background-position: -345px -278px;
+}
+
+#createHero .hairSelector .facialHair .facialHair102 .icon_facialHair {
+	background-position: -345px -278px;
+}
+
+#createHero .hairSelector .facialHair .facialHair133 .icon_facialHair {
+	background-position: -345px -370px;
+}
+
+#createHero .hairSelector .facialHair .facialHair109 .icon_facialHair {
+	background-position: -345px -370px;
+}
+
+#createHero .hairSelector .facialHair .facialHair131 .icon_facialHair {
+	background-position: -345px -462px;
+}
+
+#createHero .hairSelector .facialHair .facialHair107 .icon_facialHair {
+	background-position: -345px -462px;
+}
+
+#createHero .hairSelector .facialHair .facialHair127 .icon_facialHair {
+	background-position: -345px -554px;
+}
+
+#createHero .hairSelector .facialHair .facialHair103 .icon_facialHair {
+	background-position: -345px -554px;
+}
+
+#createHero .hairSelector .facialHair .facialHair129 .icon_facialHair {
+	background-position: -345px -646px;
+}
+
+#createHero .hairSelector .facialHair .facialHair105 .icon_facialHair {
+	background-position: -345px -646px;
+}
+
+#createHero .hairSelector .facialHair .facialHair130 .icon_facialHair {
+	background-position: -345px -738px;
+}
+
+#createHero .hairSelector .facialHair .facialHair106 .icon_facialHair {
+	background-position: -345px -738px;
+}
+
+#createHero .hairSelector .facialHair .facialHair132 .icon_facialHair {
+	background-position: -345px -830px;
+}
+
+#createHero .hairSelector .facialHair .facialHair108 .icon_facialHair {
+	background-position: -345px -830px;
+}
+
+#createHero .hairSelector .facialHair .facialHair0 .icon_facialHair {
+	background-position: -345px -922px;
+}
+
+#createHero .hairSelector .hair .hair83 .icon_hair {
+	background-position: 0px -186px;
+}
+
+#createHero .hairSelector .hair .hair121 .icon_hair {
+	background-position: 0px -186px;
+}
+
+#createHero .hairSelector .hair .hair82 .icon_hair {
+	background-position: 0px -278px;
+}
+
+#createHero .hairSelector .hair .hair120 .icon_hair {
+	background-position: 0px -278px;
+}
+
+#createHero .hairSelector .hair .hair85 .icon_hair {
+	background-position: 0px -370px;
+}
+
+#createHero .hairSelector .hair .hair123 .icon_hair {
+	background-position: 0px -370px;
+}
+
+#createHero .hairSelector .hair .hair87 .icon_hair {
+	background-position: 0px -462px;
+}
+
+#createHero .hairSelector .hair .hair125 .icon_hair {
+	background-position: 0px -462px;
+}
+
+#createHero .hairSelector .hair .hair84 .icon_hair {
+	background-position: 0px -554px;
+}
+
+#createHero .hairSelector .hair .hair122 .icon_hair {
+	background-position: 0px -554px;
+}
+
+#createHero .hairSelector .hair .hair86 .icon_hair {
+	background-position: 0px -646px;
+}
+
+#createHero .hairSelector .hair .hair124 .icon_hair {
+	background-position: 0px -646px;
+}
+
+#createHero .hairSelector .hair .hair0 .icon_hair {
+	background-position: 0px -738px;
+}
+
+#createHero.selectedHair0 .hair0,
+#createHero.selectedHair82 .hair82,
+#createHero.selectedHair83 .hair83,
+#createHero.selectedHair84 .hair84,
+#createHero.selectedHair85 .hair85,
+#createHero.selectedHair86 .hair86,
+#createHero.selectedHair87 .hair87,
+#createHero.selectedHair120 .hair120,
+#createHero.selectedHair121 .hair121,
+#createHero.selectedHair122 .hair122,
+#createHero.selectedHair123 .hair123,
+#createHero.selectedHair124 .hair124,
+#createHero.selectedHair125 .hair125,
+#createHero.selectedFacialHair0 .facialHair0,
+#createHero.selectedFacialHair102 .facialHair102,
+#createHero.selectedFacialHair103 .facialHair103,
+#createHero.selectedFacialHair104 .facialHair104,
+#createHero.selectedFacialHair105 .facialHair105,
+#createHero.selectedFacialHair106 .facialHair106,
+#createHero.selectedFacialHair107 .facialHair107,
+#createHero.selectedFacialHair108 .facialHair108,
+#createHero.selectedFacialHair109 .facialHair109,
+#createHero.selectedFacialHair126 .facialHair126,
+#createHero.selectedFacialHair127 .facialHair127,
+#createHero.selectedFacialHair128 .facialHair128,
+#createHero.selectedFacialHair129 .facialHair129,
+#createHero.selectedFacialHair130 .facialHair130,
+#createHero.selectedFacialHair131 .facialHair131,
+#createHero.selectedFacialHair132 .facialHair132,
+#createHero.selectedFacialHair133 .facialHair133 {
+	background: url(/Images/BarberShop/icon_bg.png) no-repeat 5px 10px;
+}
+
+#createHero .colorSelector {
+	height: 46px;
+	padding-top: 7px;
+}
+
+#createHero .colorSelector h2 {
+	clear: left;
+	float: left;
+	margin: 0;
+	font-size: 1.2em;
+	text-shadow: none;
+	color: black;
+	text-align: right;
+	width: 150px;
+}
+
+#createHero .skinColor,
+#createHero .hairColor {
+	float: left;
+	padding: 4px 0 3px 10px;
+	width: 180px;
+}
+
+#createHero .skinColor li,
+#createHero .hairColor li {
+	box-shadow: 0 0 0 2px black;
+	-moz-box-shadow: 0 0 0 2px black;
+	padding: 2px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	float: left;
+	height: 7px;
+	margin: 0 3px;
+	width: 7px;
+}
+
+#createHero .skinColor li:hover,
+#createHero .hairColor li:hover {
+	box-shadow: 0 0 0 2px black, 0 0 0 3px white;
+	-moz-box-shadow: 0 0 0 2px black, 0 0 0 3px white;
+}
+
+#createHero .skinColor .skinColor9 {
+	background: #f8d6b2;
+}
+
+#createHero .skinColor .skinColor8 {
+	background: #febe7c;
+}
+
+#createHero .skinColor .skinColor7 {
+	background: #ea943c;
+}
+
+#createHero .skinColor .skinColor6 {
+	background: #ec8212;
+}
+
+#createHero .skinColor .skinColor5 {
+	background: #cc7820;
+}
+
+#createHero .skinColor .skinColor4 {
+	background: #ac5c00;
+}
+
+#createHero .skinColor .skinColor3 {
+	background: #8a4a00;
+}
+
+#createHero .skinColor .skinColor2 {
+	background: #682800;
+}
+
+#createHero .skinColor .skinColor1 {
+	background: #2e2017;
+}
+
+#createHero.selectedSkinColor1 .skinColor1,
+#createHero.selectedSkinColor2 .skinColor2,
+#createHero.selectedSkinColor3 .skinColor3,
+#createHero.selectedSkinColor4 .skinColor4,
+#createHero.selectedSkinColor5 .skinColor5,
+#createHero.selectedSkinColor6 .skinColor6,
+#createHero.selectedSkinColor7 .skinColor7,
+#createHero.selectedSkinColor8 .skinColor8,
+#createHero.selectedSkinColor9 .skinColor9,
+#createHero.selectedHairColor1 .hairColor1,
+#createHero.selectedHairColor2 .hairColor2,
+#createHero.selectedHairColor3 .hairColor3,
+#createHero.selectedHairColor4 .hairColor4,
+#createHero.selectedHairColor5 .hairColor5 {
+	border: 2px solid #fff;
+	padding: 0;
+}
+
+#createHero .hairColor .hairColor1 {
+	background: #f8e5b2;
+}
+
+#createHero .hairColor .hairColor3 {
+	background: #ff7352;
+}
+
+#createHero .hairColor .hairColor5 {
+	background: #c59d81;
+}
+
+#createHero .hairColor .hairColor2 {
+	background: #8e664a;
+}
+
+#createHero .hairColor .hairColor4 {
+	background: #2e2017;
+}
+
+#createHero .actions {
+	background: url(/Images/BarberShop/actions_bg.png) no-repeat left bottom;
+	overflow: hidden;
+	padding: 7px;
+}
+
+#createHero .actions #saveHero,
+#createHero .actions .fund {
+	background: url(/Images/Common/buttons_large.png) no-repeat;
+	color: #fff;
+	cursor: pointer;
+	display: inline-block;
+	font-family: 'HeaderFont', Arial, sans-serif;
+	height: 40px;
+	line-height: 35px;
+	margin-right: 10px;
+	overflow: visible;
+	text-transform: lowercase;
+	text-decoration: none;
+	font-size: 1.4em;
+	padding: 0 11px 0 30px;
+	position: relative;
+	text-shadow: 2px 1px 0 black, 2px 1px 0 black, -2px 1px 0 black, -2px -1px 0 black, 2px -1px 0 black, 1px 2px 0 black, 1px 2px 0 black, -1px 2px 0 black, -1px -2px 0 black, 1px -2px 0 black, 2px 2px 0 black, 2px 2px 0 black, -2px 2px 0 black, -2px -2px 0 black, 2px -2px 0 black, 1px 1px 0 black, 1px 1px 0 black, -1px 1px 0 black, -1px -1px 0 black, 1px -1px 1px black;
+	background-position: left -41px;
+	float: right;
+	width: 115px;
+	text-align: center;
+}
+
+body.lang-ru #createHero .actions #saveHero,
+body.lang-ru #createHero .actions .fund {
+	font-family: Arial, sans-serif;
+	font-weight: bold;
+}
+
+#createHero .actions #saveHero .decoration,
+#createHero .actions .fund .decoration {
+	background: url(/Images/Common/buttons_large.png) no-repeat;
+	display: block;
+	height: 40px;
+	position: absolute;
+	right: -8px;
+	top: 0;
+	width: 8px;
+}
+
+#createHero .actions #saveHero:before,
+#createHero .actions .fund:before {
+	background: url(/Images/MiniStore/ministore-sprite.png) no-repeat -136px -48px;
+	width: 13px;
+	height: 15px;
+	content: "";
+	position: absolute;
+	top: 12px;
+	left: 11px;
+}
+
+#createHero .actions #saveHero:hover,
+#createHero .actions .fund:hover {
+	text-decoration: none;
+}
+
+#createHero .actions #saveHero.disabled,
+#createHero .actions .fund.disabled {
+	cursor: default;
+	background-position: left 0px;
+}
+
+#createHero .actions #saveHero.disabled .decoration,
+#createHero .actions .fund.disabled .decoration {
+	background-position: right 0px;
+}
+
+#createHero .actions #saveHero.disabled:hover,
+#createHero .actions .fund.disabled:hover {
+	background-position: left 0px;
+}
+
+#createHero .actions #saveHero.disabled:hover .decoration,
+#createHero .actions .fund.disabled:hover .decoration {
+	background-position: right 0px;
+}
+
+#createHero .actions #saveHero .decoration,
+#createHero .actions .fund .decoration {
+	background-position: right -41px;
+}
+
+#createHero .actions #saveHero:hover,
+#createHero .actions .fund:hover {
+	background-position: left -82px;
+}
+
+#createHero .actions #saveHero:hover .decoration,
+#createHero .actions .fund:hover .decoration {
+	background-position: right -82px;
+}
+
+#createHero .actions .fund {
+	display: none;
+}
+
+#createHero .actions #randomHero {
+	background: url(/Images/Common/buttons_large.png) no-repeat;
+	color: #fff;
+	cursor: pointer;
+	display: inline-block;
+	font-family: 'HeaderFont', Arial, sans-serif;
+	height: 40px;
+	line-height: 35px;
+	margin-right: 10px;
+	overflow: visible;
+	text-transform: lowercase;
+	text-decoration: none;
+	font-size: 1.4em;
+	padding: 0 11px 0 30px;
+	position: relative;
+	text-shadow: 2px 1px 0 black, 2px 1px 0 black, -2px 1px 0 black, -2px -1px 0 black, 2px -1px 0 black, 1px 2px 0 black, 1px 2px 0 black, -1px 2px 0 black, -1px -2px 0 black, 1px -2px 0 black, 2px 2px 0 black, 2px 2px 0 black, -2px 2px 0 black, -2px -2px 0 black, 2px -2px 0 black, 1px 1px 0 black, 1px 1px 0 black, -1px 1px 0 black, -1px -1px 0 black, 1px -1px 1px black;
+	background-position: left -123px;
+	width: 115px;
+	float: left;
+	text-align: center;
+}
+
+body.lang-ru #createHero .actions #randomHero {
+	font-family: Arial, sans-serif;
+	font-weight: bold;
+}
+
+#createHero .actions #randomHero .decoration {
+	background: url(/Images/Common/buttons_large.png) no-repeat;
+	display: block;
+	height: 40px;
+	position: absolute;
+	right: -8px;
+	top: 0;
+	width: 8px;
+}
+
+#createHero .actions #randomHero:before {
+	background: url(/Images/MiniStore/ministore-sprite.png) no-repeat -136px -48px;
+	width: 13px;
+	height: 15px;
+	content: "";
+	position: absolute;
+	top: 12px;
+	left: 11px;
+}
+
+#createHero .actions #randomHero:hover {
+	text-decoration: none;
+}
+
+#createHero .actions #randomHero.disabled {
+	cursor: default;
+	background-position: left 0px;
+}
+
+#createHero .actions #randomHero.disabled .decoration {
+	background-position: right 0px;
+}
+
+#createHero .actions #randomHero.disabled:hover {
+	background-position: left 0px;
+}
+
+#createHero .actions #randomHero.disabled:hover .decoration {
+	background-position: right 0px;
+}
+
+#createHero .actions #randomHero .decoration {
+	background-position: right -123px;
+}
+
+#createHero .actions #randomHero:hover {
+	background-position: left -164px;
+}
+
+#createHero .actions #randomHero:hover .decoration {
+	background-position: right -164px;
+}
+
+#createHero .actions .price {
+	border: 2px solid #000;
+	background: url(/Images/Common/currencyIcons.png) no-repeat 100px 1px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	background-color: rgba(255, 255, 255, 0.5);
+	padding-right: 48px;
+	width: 105px;
+	display: block;
+	color: white;
+	float: left;
+	height: 34px;
+	font-size: 1.8em;
+	line-height: 32px;
+	margin-top: 1px;
+	font-family: HeaderFont;
+	font-family: 'HeaderFont', Arial, sans-serif;
+	text-shadow: 2px 1px 0 black, 2px 1px 0 black, -2px 1px 0 black, -2px -1px 0 black, 2px -1px 0 black, 1px 2px 0 black, 1px 2px 0 black, -1px 2px 0 black, -1px -2px 0 black, 1px -2px 0 black, 2px 2px 0 black, 2px 2px 0 black, -2px 2px 0 black, -2px -2px 0 black, 2px -2px 0 black, 1px 1px 0 black, 1px 1px 0 black, -1px 1px 0 black, -1px -1px 0 black, 1px -1px 1px black;
+}
+
+body.lang-ru #createHero .actions .price {
+	font-family: Arial, sans-serif;
+	font-weight: bold;
+}
+
+#createHero .preview {
+	background: url(/Images/BarberShop/shadow.png) no-repeat -35px 445px;
+	width: 420px;
+	position: absolute;
+	top: 20px;
+	left: -1px;
+	height: 500px;
+}
+
+#createHero .preview .face {
+	width: 69px;
+	height: 92px;
+	left: 107px;
+	position: absolute;
+	top: 10px;
+	overflow: hidden;
+}
+
+#createHero .preview .doll {
+	background-repeat: no-repeat;
+	background-position: 0 75px;
+	position: absolute;
+	top: 0;
+	left: 25px;
+	width: 305px;
+	height: 485px;
+}
+
+#createHero .preview .help {
+	width: 200px;
+	background-color: #fff;
+	border: 2px solid #000;
+	padding: 8px 10px 12px;
+	position: absolute;
+	-webkit-text-stroke-width: 0.1px;
+	top: 20px;
+	left: 210px;
+}
+
+#createHero .preview .help:before {
+	content: '';
+	background: url(/Images/Common/bubbleArrow.png) no-repeat;
+	width: 43px;
+	height: 19px;
+	position: absolute;
+	top: 30px;
+	left: -43px;
+}
+
+#createHero .preview .help .header,
+#createHero .preview .help .bodyText {
+	font-family: ComicFont;
+	font-weight: bold;
+	text-align: center;
+}
+
+#createHero .preview .help .header {
+	display: block;
+	font-size: 1.2em;
+	line-height: 1.3em;
+	margin-bottom: 10px;
+}
+
+#createHero .preview .help .bodyText {
+	line-height: 1.3em;
+}
+
+#createHero .overlay {
+	display: none;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#createHero .overlay .nameSelector {
+	width: 200px;
+	background-color: #fff;
+	border: 2px solid #000;
+	padding: 8px 10px 12px;
+	position: absolute;
+	-webkit-text-stroke-width: 0.1px;
+	top: 20px;
+	left: 210px;
+	z-index: 2;
+}
+
+#createHero .overlay .nameSelector:before {
+	content: '';
+	background: url(/Images/Common/bubbleArrow.png) no-repeat;
+	width: 43px;
+	height: 19px;
+	position: absolute;
+	top: 30px;
+	left: -43px;
+}
+
+#createHero .overlay .nameSelector .header,
+#createHero .overlay .nameSelector .bodyText {
+	font-family: ComicFont;
+	font-weight: bold;
+	text-align: center;
+}
+
+#createHero .overlay .nameSelector .header {
+	display: block;
+	font-size: 1.2em;
+	line-height: 1.3em;
+	margin-bottom: 10px;
+}
+
+#createHero .overlay .nameSelector .bodyText {
+	line-height: 1.3em;
+}
+
+#createHero .overlay .nameSelector .heroName {
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	border: 2px solid #000;
+	padding: 2px;
+	width: 180px;
+	display: block;
+	height: 16px;
+	text-align: left;
+	font-size: 1.1em;
+	line-height: 16px;
+	margin-bottom: 5px;
+}
+
+#createHero .overlay .nameSelector #chooseName {
+	background: url(/Images/Common/buttons.png) no-repeat;
+	color: #fff;
+	cursor: pointer;
+	display: inline-block;
+	font-family: 'HeaderFont', Arial, sans-serif;
+	height: 30px;
+	line-height: 25px;
+	margin-right: 10px;
+	overflow: visible;
+	text-transform: lowercase;
+	text-decoration: none;
+	font-size: 1.4em;
+	padding: 0 5px 0 25px;
+	position: relative;
+	text-shadow: 2px 1px 0 black, 2px 1px 0 black, -2px 1px 0 black, -2px -1px 0 black, 2px -1px 0 black, 1px 2px 0 black, 1px 2px 0 black, -1px 2px 0 black, -1px -2px 0 black, 1px -2px 0 black, 2px 2px 0 black, 2px 2px 0 black, -2px 2px 0 black, -2px -2px 0 black, 2px -2px 0 black, 1px 1px 0 black, 1px 1px 0 black, -1px 1px 0 black, -1px -1px 0 black, 1px -1px 1px black;
+	background-position: left -31px;
+}
+
+body.lang-ru #createHero .overlay .nameSelector #chooseName {
+	font-family: Arial, sans-serif;
+	font-weight: bold;
+}
+
+#createHero .overlay .nameSelector #chooseName .decoration {
+	background: url(/Images/Common/buttons.png) no-repeat;
+	display: block;
+	height: 30px;
+	position: absolute;
+	right: -8px;
+	top: 0;
+	width: 8px;
+}
+
+#createHero .overlay .nameSelector #chooseName:before {
+	background: url(/Images/MiniStore/ministore-sprite.png) no-repeat -136px -48px;
+	width: 13px;
+	height: 15px;
+	content: "";
+	position: absolute;
+	top: 6px;
+	left: 8px;
+}
+
+#createHero .overlay .nameSelector #chooseName:hover {
+	text-decoration: none;
+}
+
+#createHero .overlay .nameSelector #chooseName.disabled {
+	cursor: default;
+	background-position: left 0px;
+}
+
+#createHero .overlay .nameSelector #chooseName.disabled .decoration {
+	background-position: right 0px;
+}
+
+#createHero .overlay .nameSelector #chooseName.disabled:hover {
+	background-position: left 0px;
+}
+
+#createHero .overlay .nameSelector #chooseName.disabled:hover .decoration {
+	background-position: right 0px;
+}
+
+#createHero .overlay .nameSelector #chooseName .decoration {
+	background-position: right -31px;
+}
+
+#createHero .overlay .nameSelector #chooseName:hover {
+	background-position: left -62px;
+}
+
+#createHero .overlay .nameSelector #chooseName:hover .decoration {
+	background-position: right -62px;
+}
+
+#createHero .overlay .nameSelector #cancelName {
+	background: url(/Images/Common/buttons.png) no-repeat;
+	color: #fff;
+	cursor: pointer;
+	display: inline-block;
+	font-family: 'HeaderFont', Arial, sans-serif;
+	height: 30px;
+	line-height: 25px;
+	margin-right: 10px;
+	overflow: visible;
+	text-transform: lowercase;
+	text-decoration: none;
+	font-size: 1.4em;
+	padding: 0 5px 0 25px;
+	position: relative;
+	text-shadow: 2px 1px 0 black, 2px 1px 0 black, -2px 1px 0 black, -2px -1px 0 black, 2px -1px 0 black, 1px 2px 0 black, 1px 2px 0 black, -1px 2px 0 black, -1px -2px 0 black, 1px -2px 0 black, 2px 2px 0 black, 2px 2px 0 black, -2px 2px 0 black, -2px -2px 0 black, 2px -2px 0 black, 1px 1px 0 black, 1px 1px 0 black, -1px 1px 0 black, -1px -1px 0 black, 1px -1px 1px black;
+	background-position: left -217px;
+}
+
+body.lang-ru #createHero .overlay .nameSelector #cancelName {
+	font-family: Arial, sans-serif;
+	font-weight: bold;
+}
+
+#createHero .overlay .nameSelector #cancelName .decoration {
+	background: url(/Images/Common/buttons.png) no-repeat;
+	display: block;
+	height: 30px;
+	position: absolute;
+	right: -8px;
+	top: 0;
+	width: 8px;
+}
+
+#createHero .overlay .nameSelector #cancelName:before {
+	background: url(/Images/MiniStore/ministore-sprite.png) no-repeat -136px -48px;
+	width: 13px;
+	height: 15px;
+	content: "";
+	position: absolute;
+	top: 6px;
+	left: 8px;
+}
+
+#createHero .overlay .nameSelector #cancelName:hover {
+	text-decoration: none;
+}
+
+#createHero .overlay .nameSelector #cancelName.disabled {
+	cursor: default;
+	background-position: left 0px;
+}
+
+#createHero .overlay .nameSelector #cancelName.disabled .decoration {
+	background-position: right 0px;
+}
+
+#createHero .overlay .nameSelector #cancelName.disabled:hover {
+	background-position: left 0px;
+}
+
+#createHero .overlay .nameSelector #cancelName.disabled:hover .decoration {
+	background-position: right 0px;
+}
+
+#createHero .overlay .nameSelector #cancelName .decoration {
+	background-position: right -217px;
+}
+
+#createHero .overlay .nameSelector #cancelName:hover {
+	background-position: left -248px;
+}
+
+#createHero .overlay .nameSelector #cancelName:hover .decoration {
+	background-position: right -248px;
+}
+
+#createHero .overlay .error {
+	display: none;
+	width: 170px;
+	position: absolute;
+	top: 128px;
+	left: 220px;
+	background-color: white;
+	border: 2px solid black;
+	color: black;
+	padding: 3px 15px 5px;
+	z-index: 1;
+	font-size: 0.9em;
+	text-align: center;
+}
+
+.hairSelector .icon_shadow,
+.hairSelector .icon_skin,
+.hairSelector .icon_facialHair,
+.hairSelector .icon_hair,
+.hairSelector .facialFeatures,
+.preview .face .icon_shadow,
+.preview .face .icon_skin,
+.preview .face .icon_facialHair,
+.preview .face .icon_hair,
+.preview .face .facialFeatures {
+	display: block;
+	background: no-repeat;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 92px;
+	width: 69px;
+}
+
+.selectedFaction1 .hairSelector .icon_shadow,
+.selectedFaction1 .hairSelector .icon_skin,
+.selectedFaction1 .hairSelector .icon_facialHair,
+.selectedFaction1 .hairSelector .icon_hair,
+.selectedFaction1 .hairSelector .facialFeatures,
+.selectedFaction1 .preview .face .icon_shadow,
+.selectedFaction1 .preview .face .icon_skin,
+.selectedFaction1 .preview .face .icon_facialHair,
+.selectedFaction1 .preview .face .icon_hair,
+.selectedFaction1 .preview .face .facialFeatures {
+	background-image: url(/Images/BarberShop/national.png);
+}
+
+.selectedFaction2 .hairSelector .icon_shadow,
+.selectedFaction2 .hairSelector .icon_skin,
+.selectedFaction2 .hairSelector .icon_facialHair,
+.selectedFaction2 .hairSelector .icon_hair,
+.selectedFaction2 .hairSelector .facialFeatures,
+.selectedFaction2 .preview .face .icon_shadow,
+.selectedFaction2 .preview .face .icon_skin,
+.selectedFaction2 .preview .face .icon_facialHair,
+.selectedFaction2 .preview .face .icon_hair,
+.selectedFaction2 .preview .face .facialFeatures {
+	background-image: url(/Images/BarberShop/royal.png);
+}
+
+.hairSelector .icon_shadow,
+.preview .face .icon_shadow {
+	background-position: -621px -2px;
+}
+
+.selectedSkinColor1 .hairSelector .icon_skin,
+.selectedSkinColor1 .preview .face .icon_skin {
+	background-position: -552px -2px;
+}
+
+.selectedSkinColor2 .hairSelector .icon_skin,
+.selectedSkinColor2 .preview .face .icon_skin {
+	background-position: -483px -2px;
+}
+
+.selectedSkinColor3 .hairSelector .icon_skin,
+.selectedSkinColor3 .preview .face .icon_skin {
+	background-position: -414px -2px;
+}
+
+.selectedSkinColor4 .hairSelector .icon_skin,
+.selectedSkinColor4 .preview .face .icon_skin {
+	background-position: -345px -2px;
+}
+
+.selectedSkinColor5 .hairSelector .icon_skin,
+.selectedSkinColor5 .preview .face .icon_skin {
+	background-position: -276px -2px;
+}
+
+.selectedSkinColor6 .hairSelector .icon_skin,
+.selectedSkinColor6 .preview .face .icon_skin {
+	background-position: -207px -2px;
+}
+
+.selectedSkinColor7 .hairSelector .icon_skin,
+.selectedSkinColor7 .preview .face .icon_skin {
+	background-position: -138px -2px;
+}
+
+.selectedSkinColor8 .hairSelector .icon_skin,
+.selectedSkinColor8 .preview .face .icon_skin {
+	background-position: -69px -2px;
+}
+
+.selectedSkinColor9 .hairSelector .icon_skin,
+.selectedSkinColor9 .preview .face .icon_skin {
+	background-position: 0px -2px;
+}
+
+.hairSelector .icon_hair,
+.preview .face .icon_hair {
+	width: 450px;
+}
+
+.selectedHair83 .hairSelector .icon_hair,
+.selectedHair83 .preview .face .icon_hair {
+	background-position: 0px -186px;
+}
+
+.selectedHair121 .hairSelector .icon_hair,
+.selectedHair121 .preview .face .icon_hair {
+	background-position: 0px -186px;
+}
+
+.selectedHair82 .hairSelector .icon_hair,
+.selectedHair82 .preview .face .icon_hair {
+	background-position: 0px -278px;
+}
+
+.selectedHair120 .hairSelector .icon_hair,
+.selectedHair120 .preview .face .icon_hair {
+	background-position: 0px -278px;
+}
+
+.selectedHair85 .hairSelector .icon_hair,
+.selectedHair85 .preview .face .icon_hair {
+	background-position: 0px -370px;
+}
+
+.selectedHair123 .hairSelector .icon_hair,
+.selectedHair123 .preview .face .icon_hair {
+	background-position: 0px -370px;
+}
+
+.selectedHair87 .hairSelector .icon_hair,
+.selectedHair87 .preview .face .icon_hair {
+	background-position: 0px -462px;
+}
+
+.selectedHair125 .hairSelector .icon_hair,
+.selectedHair125 .preview .face .icon_hair {
+	background-position: 0px -462px;
+}
+
+.selectedHair84 .hairSelector .icon_hair,
+.selectedHair84 .preview .face .icon_hair {
+	background-position: 0px -554px;
+}
+
+.selectedHair122 .hairSelector .icon_hair,
+.selectedHair122 .preview .face .icon_hair {
+	background-position: 0px -554px;
+}
+
+.selectedHair86 .hairSelector .icon_hair,
+.selectedHair86 .preview .face .icon_hair {
+	background-position: 0px -646px;
+}
+
+.selectedHair124 .hairSelector .icon_hair,
+.selectedHair124 .preview .face .icon_hair {
+	background-position: 0px -646px;
+}
+
+.selectedHair0 .hairSelector .icon_hair,
+.selectedHair0 .preview .face .icon_hair {
+	background-position: 0px -738px;
+}
+
+.hairSelector .icon_facialHair,
+.preview .face .icon_facialHair {
+	width: 350px;
+}
+
+.selectedFacialHair128 .hairSelector .icon_facialHair,
+.selectedFacialHair128 .preview .face .icon_facialHair {
+	background-position: -345px -186px;
+}
+
+.selectedFacialHair104 .hairSelector .icon_facialHair,
+.selectedFacialHair104 .preview .face .icon_facialHair {
+	background-position: -345px -186px;
+}
+
+.selectedFacialHair126 .hairSelector .icon_facialHair,
+.selectedFacialHair126 .preview .face .icon_facialHair {
+	background-position: -345px -278px;
+}
+
+.selectedFacialHair102 .hairSelector .icon_facialHair,
+.selectedFacialHair102 .preview .face .icon_facialHair {
+	background-position: -345px -278px;
+}
+
+.selectedFacialHair133 .hairSelector .icon_facialHair,
+.selectedFacialHair133 .preview .face .icon_facialHair {
+	background-position: -345px -370px;
+}
+
+.selectedFacialHair109 .hairSelector .icon_facialHair,
+.selectedFacialHair109 .preview .face .icon_facialHair {
+	background-position: -345px -370px;
+}
+
+.selectedFacialHair131 .hairSelector .icon_facialHair,
+.selectedFacialHair131 .preview .face .icon_facialHair {
+	background-position: -345px -462px;
+}
+
+.selectedFacialHair107 .hairSelector .icon_facialHair,
+.selectedFacialHair107 .preview .face .icon_facialHair {
+	background-position: -345px -462px;
+}
+
+.selectedFacialHair127 .hairSelector .icon_facialHair,
+.selectedFacialHair127 .preview .face .icon_facialHair {
+	background-position: -345px -554px;
+}
+
+.selectedFacialHair103 .hairSelector .icon_facialHair,
+.selectedFacialHair103 .preview .face .icon_facialHair {
+	background-position: -345px -554px;
+}
+
+.selectedFacialHair129 .hairSelector .icon_facialHair,
+.selectedFacialHair129 .preview .face .icon_facialHair {
+	background-position: -345px -646px;
+}
+
+.selectedFacialHair105 .hairSelector .icon_facialHair,
+.selectedFacialHair105 .preview .face .icon_facialHair {
+	background-position: -345px -646px;
+}
+
+.selectedFacialHair130 .hairSelector .icon_facialHair,
+.selectedFacialHair130 .preview .face .icon_facialHair {
+	background-position: -345px -738px;
+}
+
+.selectedFacialHair106 .hairSelector .icon_facialHair,
+.selectedFacialHair106 .preview .face .icon_facialHair {
+	background-position: -345px -738px;
+}
+
+.selectedFacialHair132 .hairSelector .icon_facialHair,
+.selectedFacialHair132 .preview .face .icon_facialHair {
+	background-position: -345px -830px;
+}
+
+.selectedFacialHair108 .hairSelector .icon_facialHair,
+.selectedFacialHair108 .preview .face .icon_facialHair {
+	background-position: -345px -830px;
+}
+
+.selectedFacialHair0 .hairSelector .icon_facialHair,
+.selectedFacialHair0 .preview .face .icon_facialHair {
+	background-position: -345px -922px;
+}
+
+.selectedHairColor1 .hairSelector .icon_hair,
+.selectedHairColor1 .hairSelector .icon_facialHair,
+.selectedHairColor1 .preview .face .icon_hair,
+.selectedHairColor1 .preview .face .icon_facialHair {
+	left: 0px;
+}
+
+.selectedHairColor3 .hairSelector .icon_hair,
+.selectedHairColor3 .hairSelector .icon_facialHair,
+.selectedHairColor3 .preview .face .icon_hair,
+.selectedHairColor3 .preview .face .icon_facialHair {
+	left: -69px;
+}
+
+.selectedHairColor5 .hairSelector .icon_hair,
+.selectedHairColor5 .hairSelector .icon_facialHair,
+.selectedHairColor5 .preview .face .icon_hair,
+.selectedHairColor5 .preview .face .icon_facialHair {
+	left: -138px;
+}
+
+.selectedHairColor2 .hairSelector .icon_hair,
+.selectedHairColor2 .hairSelector .icon_facialHair,
+.selectedHairColor2 .preview .face .icon_hair,
+.selectedHairColor2 .preview .face .icon_facialHair {
+	left: -207px;
+}
+
+.selectedHairColor4 .hairSelector .icon_hair,
+.selectedHairColor4 .hairSelector .icon_facialHair,
+.selectedHairColor4 .preview .face .icon_hair,
+.selectedHairColor4 .preview .face .icon_facialHair {
+	left: -276px;
+}
+
+.hairSelector .facialFeatures,
+.preview .face .facialFeatures {
+	background-position: 0px -94px;
 }

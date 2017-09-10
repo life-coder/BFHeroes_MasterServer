@@ -55,8 +55,7 @@ class HANDLER(Protocol):
             self.PacketID += 1
             rank.ReceiveComponent(self, data, TXN)
         elif Command == 'pnow':
-            # Dunno what in this case need to add 2 not 1...
-            self.PacketID += 2
+            self.PacketID += 1
             pnow.ReceiveComponent(self, data, TXN)
         else:
             print ConsoleColor('Warning') + '[FESLClient] Warning! Got unknown command (' + Command + '] and unknown TXN (' + TXN + ')!' + ConsoleColor('End')

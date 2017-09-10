@@ -23,8 +23,7 @@ def ReceiveComponent(self, data):
             break
 
     if CorrectlyLoggedIn == True:
-        packedIP = socket.inet_aton(self.transport.getPeer().host)
-        self.GAMEOBJ.EXTIP = struct.unpack('!L', packedIP)[0]
+        self.GAMEOBJ.EXTIP, self.port = self.transport.client
         USERPacket = PacketEncoder.SetVar('TID', self.PacketID)
         USERPacket += PacketEncoder.SetVar('NAME', 'BFHeroesServerPC')
         USERPacket += PacketEncoder.SetVar('CID', '', True)

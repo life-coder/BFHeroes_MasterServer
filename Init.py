@@ -71,6 +71,7 @@ def Start():
         factory = Factory()
         factory.protocol = TheaterClient.HANDLER
         reactor.listenTCP(TheaterClientPort, factory)
+        reactor.listenUDP(TheaterClientPort, TheaterClient.HANDLER_UDP())
         print ConsoleColor('Success') + '[TheaterClient] Started listening at port: ' + str(TheaterClientPort) + ConsoleColor('End')
     except Exception, BindError:
         print ConsoleColor('Error') + 'Fatal Error! Cannot bind socket to port: ' + str(TheaterClientPort)
@@ -84,6 +85,7 @@ def Start():
         factory = Factory()
         factory.protocol = TheaterServer.HANDLER
         reactor.listenTCP(TheaterServerPort, factory)
+        reactor.listenUDP(TheaterServerPort, TheaterServer.HANDLER_UDP())
         print ConsoleColor('Success') + '[TheaterServer] Started listening at port: ' + str(TheaterServerPort) + ConsoleColor('End')
     except Exception, BindError:
         print ConsoleColor('Error') + 'Fatal Error! Cannot bind socket to port: ' + str(TheaterServerPort)

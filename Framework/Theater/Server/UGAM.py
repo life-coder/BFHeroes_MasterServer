@@ -4,6 +4,8 @@ from Utils import PacketEncoder
 def ReceiveComponent(self, data):
     # Update server info
 
+    print 'UPDATING GAME !!!! ONEONEONE'
+
     if data.find('UBRA@') != -1:
         data = data.split('UBRA@')[0]
         UBRAPacket = PacketEncoder.SetVar('TID', self.PacketID)
@@ -35,3 +37,5 @@ def ReceiveComponent(self, data):
         loop += 1
 
     print ConsoleColor('Success') + '[TheaterServer][UGAM] Successfully updated game info!' + ConsoleColor('End')
+    print self.GAMEOBJ.AttrNames
+    print self.GAMEOBJ.AttrData

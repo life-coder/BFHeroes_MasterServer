@@ -16,16 +16,29 @@ def Prepare():
                   "`AccountID`   INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, " \
                   "`Username`	TEXT NOT NULL UNIQUE," \
                   "`EMail`     TEXT NOT NULL UNIQUE," \
-                  "`Password`   TEXT NOT NULL" \
+                  "`Password`   TEXT NOT NULL," \
+                  "`Birthday`   TEXT NOT NULL" \
                   ");"
 
         cursor = database.cursor()
         cursor.execute(command)
         database.commit()
 
-        command = "CREATE TABLE `Personas` 	(" \
+        command = "CREATE TABLE `Heroes` 	(" \
                   "`AccountID`   INTEGER NOT NULL, " \
-                  "`PersonaName`	TEXT NOT NULL UNIQUE" \
+                  "`HeroID`   INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, " \
+                  "`HeroName`	TEXT NOT NULL UNIQUE" \
+                  ");"
+
+        cursor = database.cursor()
+        cursor.execute(command)
+        database.commit()
+
+        command = "CREATE TABLE `HeroesStats` 	(" \
+                  "`HeroID`     INTEGER NOT NULL," \
+                  "`StatName`	TEXT NOT NULL," \
+                  "`StatValue`  INTEGER DEFAULT 0," \
+                  "`StatText`   TEXT" \
                   ");"
 
         cursor = database.cursor()
@@ -41,11 +54,72 @@ def Prepare():
         cursor.execute(command)
         database.commit()
 
-def RegisterUser(username, email, password):
+def RegisterUser(username, email, password, birthday):
     database = sqlite3.connect(DatabaseFileLocation)
     cursor = database.cursor()
-    cursor.execute("INSERT INTO Accounts (Username,EMail,Password) VALUES (?,?,?)", (username, email, password,))
+    cursor.execute("INSERT INTO Accounts (Username,EMail,Password,Birthday) VALUES (?,?,?,?)", (username, email, password, birthday,))
     database.commit()
+
+def RegisterHero(ID, baseMSGFactionStats, baseMSGPersonaClassStats, baseMSGAppearanceSkinToneStats, haircolor_ui_name, baseMSGAppearanceHairStyleStats, facial_ui_name, nameCharacterText):
+    database = sqlite3.connect(DatabaseFileLocation)
+    cursor = database.cursor()
+    cursor.execute("INSERT INTO `Heroes` (AccountID, HeroName) VALUES (?,?)", (ID, nameCharacterText,))
+    database.commit()
+
+    cursor = database.cursor()
+    cursor.execute("SELECT HeroID FROM `Heroes` WHERE HeroName = ?", (nameCharacterText,))
+    HeroID = cursor.fetchone()[0]
+
+    cursor = database.cursor()
+    cursor.execute("INSERT INTO `HeroesStats` (HeroID, StatName, StatValue) VALUES (?,?,?)", (HeroID, 'c_team', baseMSGFactionStats))
+    cursor.execute("INSERT INTO `HeroesStats` (HeroID, StatName, StatValue) VALUES (?,?,?)", (HeroID, 'c_kit', baseMSGPersonaClassStats))
+    cursor.execute("INSERT INTO `HeroesStats` (HeroID, StatName, StatValue) VALUES (?,?,?)", (HeroID, 'c_skc', baseMSGAppearanceSkinToneStats))
+    cursor.execute("INSERT INTO `HeroesStats` (HeroID, StatName, StatValue) VALUES (?,?,?)", (HeroID, 'c_hrc', haircolor_ui_name))
+    cursor.execute("INSERT INTO `HeroesStats` (HeroID, StatName, StatValue) VALUES (?,?,?)", (HeroID, 'c_fhrs', baseMSGAppearanceHairStyleStats))
+    cursor.execute("INSERT INTO `HeroesStats` (HeroID, StatName, StatValue) VALUES (?,?,?)", (HeroID, 'c_hrs', facial_ui_name))
+    database.commit()
+
+def GetStat(ID, StatName):
+    database = sqlite3.connect(DatabaseFileLocation)
+    cursor = database.cursor()
+    cursor.execute("SELECT StatValue FROM `HeroesStats` WHERE `HeroID` = ? AND `StatName` = ?", (ID,StatName,))
+    value = cursor.fetchone()
+    if value == None:
+        value = 0
+    else:
+        value = value[0]
+    return value
+
+def GetText(ID, StatName):
+    database = sqlite3.connect(DatabaseFileLocation)
+    cursor = database.cursor()
+    cursor.execute("SELECT StatText FROM `HeroesStats` WHERE `HeroID` = ? AND `StatName` = ?", (ID,StatName,))
+    value = cursor.fetchone()
+    if value == None:
+        value = 0
+    else:
+        value = value[0]
+    return value
+
+def UpdateStat(ID, StatName, StatValue, StatText):
+    database = sqlite3.connect(DatabaseFileLocation)
+    cursor = database.cursor()
+    cursor.execute("SELECT StatValue FROM `HeroesStats` WHERE `HeroID` = ? AND `StatName` = ?", (ID,StatName,))
+    value = cursor.fetchone()
+
+    if value == None:
+        cursor = database.cursor()
+        cursor.execute("INSERT INTO `HeroesStats` (HeroID, StatName, StatValue, StatText) VALUES (?,?,?,?)", (ID, StatName, StatValue, StatText,))
+    else:
+        cursor = database.cursor()
+        cursor.execute("UPDATE `HeroesStats` SET StatName = ?, StatValue = ?, StatText = ? WHERE HeroID = ?", (StatName, StatValue, StatText, ID,))
+    database.commit()
+
+def GetHeroes(ID):
+    database = sqlite3.connect(DatabaseFileLocation)
+    cursor = database.cursor()
+    cursor.execute("SELECT * FROM `Heroes` WHERE `AccountID` = ?", (ID,))
+    return cursor.fetchall()
 
 def LoginUser(username):
     database = sqlite3.connect(DatabaseFileLocation)
@@ -89,4 +163,16 @@ def GetEmail(ID):
     database = sqlite3.connect(DatabaseFileLocation)
     cursor = database.cursor()
     cursor.execute("SELECT EMail FROM `Accounts` WHERE AccountID = ?", (ID,))
+    return cursor.fetchone()[0]
+
+def GetBirthday(ID):
+    database = sqlite3.connect(DatabaseFileLocation)
+    cursor = database.cursor()
+    cursor.execute("SELECT Birthday FROM `Accounts` WHERE AccountID = ?", (ID,))
+    return cursor.fetchone()[0]
+
+def GetHeroIDByName(name):
+    database = sqlite3.connect(DatabaseFileLocation)
+    cursor = database.cursor()
+    cursor.execute("SELECT HeroID FROM `Heroes` WHERE HeroName = ?", (name,))
     return cursor.fetchone()[0]

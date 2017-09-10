@@ -97,24 +97,23 @@
 					<div class="header">
 						<h2>Register</h2>
 					</div>
-
 					
 					<div class="clearfix magmaFormElementWrapper magmaInputWrapper">
-						<label class="magmaLabel" for="username">Username</label><span class="magmaInput size-300"><input id="username" name="username" size="300" type="text"></span>
+						<label class="magmaLabel" for="username">Username</label><span class="magmaInput size-300"><input id="username" name="username" size="300" type="text" required></span>
 
 						<div class="magmaAfter">
 						</div>
 					</div>
 
 					<div class="clearfix magmaFormElementWrapper magmaInputWrapper">
-						<label class="magmaLabel" for="email">E-Mail</label><span class="magmaInput size-300"><input id="email" name="email" size="300" type="text"></span>
+						<label class="magmaLabel" for="email">E-Mail</label><span class="magmaInput size-300"><input id="email" name="email" size="300" type="text" required></span>
 
 						<div class="magmaAfter">
 						</div>
 					</div>
 
 					<div class="clearfix magmaFormElementWrapper magmaInputWrapper">
-						<label class="magmaLabel" for="password">Password</label><span class="magmaInput size-300"><input id="password" name="password" size="300" type="password"></span>
+						<label class="magmaLabel" for="password">Password</label><span class="magmaInput size-300"><input id="password" name="password" size="300" type="password" required></span>
 
 						<div class="magmaAfter">
 						</div>
@@ -122,8 +121,15 @@
 
 
 					<div class="clearfix magmaFormElementWrapper magmaInputWrapper">
-						<label class="magmaLabel" for="password2">Confirm Password</label><span class="magmaInput size-300"><input id="password2" name="password2" size="300" type="password"></span>
+						<label class="magmaLabel" for="password2">Confirm Password</label><span class="magmaInput size-300"><input id="password2" name="password2" size="300" type="password" required></span>
 
+						<div class="magmaAfter">
+						</div>
+					</div>
+					
+					<div class="clearfix magmaFormElementWrapper magmaInputWrapper">
+						<label class="magmaLabel" for="birthday">Birthday (dd-mm-yyyy)</label><span class="magmaInput size-300"><input id="birthday" name="birthday" size="300" type="date" required pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}"></span>
+						<span class="validity"></span>
 						<div class="magmaAfter">
 						</div>
 					</div>
@@ -167,10 +173,11 @@
 	<script>
 	document.getElementById("register").addEventListener("click", function () {
 	     var xhttp = new XMLHttpRequest();
-	     var username = document.getElementById("username").value;
+		 var username = document.getElementById("username").value;
 		 var email = document.getElementById("email").value;
 	     var password = document.getElementById("password").value;
 	     var password_confirmation = document.getElementById("password2").value;
+		 var birthday = document.getElementById("birthday").value;
 	     xhttp.onreadystatechange = function() {
 	       if (this.readyState == 4 && this.status == 200) {
 	        var jsonResponse = JSON.parse(this.responseText);
@@ -185,8 +192,9 @@
 	       }
 	     };
 	     xhttp.open("POST", "/api/register", true);
-	     xhttp.send("username="+username+"&email="+email+"&password="+password+"&password2="+password_confirmation);
+	     xhttp.send("username="+username+"&email="+email+"&password="+password+"&password2="+password_confirmation+"&birthday="+birthday);
 	});
 	</script>
+	<script>
 </body>
 </html>

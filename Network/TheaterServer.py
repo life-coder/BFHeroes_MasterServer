@@ -1,7 +1,7 @@
-from twisted.internet.protocol import Protocol
+from twisted.internet.protocol import Protocol, DatagramProtocol
 from Config import ConsoleColor
 from Utils import PacketDecoder
-from Framework.Theater.Server import CONN, USER, CGAM, UBRA, UGAM, EGRS
+from Framework.Theater.Server import CONN, USER, CGAM, UBRA, UGAM, EGRS, ECHO
 
 class HANDLER(Protocol):
     def __init__(self):
@@ -56,6 +56,26 @@ class HANDLER(Protocol):
             UGAM.ReceiveComponent(self, data)
         elif Command == 'EGRS':
             EGRS.ReceiveComponent(self, data)
+        else:
+            print ConsoleColor(
+                'Warning') + '[TheaterServer] Warning! Got unknown command (' + Command + ']!' + ConsoleColor(
+                'End')
+
+
+class HANDLER_UDP(DatagramProtocol):
+
+    def __init__(self):
+        self.PacketID = 0
+
+    def datagramReceived(self, data, (host, port)):
+        try:
+            Command = PacketDecoder.decode(data).GetCommand()
+            self.PacketID += 1
+        except:
+            Command = 'null'
+
+        if Command == 'ECHO':
+            ECHO.ReceiveComponent(self, data, (host, port))
         else:
             print ConsoleColor(
                 'Warning') + '[TheaterServer] Warning! Got unknown command (' + Command + ']!' + ConsoleColor(

@@ -1,6 +1,6 @@
 from Config import ConsoleColor
-from Utils import PacketEncoder, PacketDecoder, DataClass, Globals, RandomStringGenerator
-from Framework.Database import GetWebSession, GetUserName, GetEmail
+from Utils import PacketEncoder, PacketDecoder
+from Framework.Database import GetStat, UpdateStat, GetText
 
 def ReceiveComponent(self, data, txn):
     if txn == 'GetStats':
@@ -32,8 +32,8 @@ def ReceiveComponent(self, data, txn):
         while loop != RequestedKeysNumber:
             # For now everything is static
             GetStatsPacket += PacketEncoder.SetVar('stats.' + str(loop) + '.key', RequestedKeysNames[loop])
-            GetStatsPacket += PacketEncoder.SetVar('stats.' + str(loop) + '.value', 0)
-            GetStatsPacket += PacketEncoder.SetVar('stats.' + str(loop) + '.text', '')
+            GetStatsPacket += PacketEncoder.SetVar('stats.' + str(loop) + '.value', GetStat(OwnerID, RequestedKeysNames[loop]))
+            GetStatsPacket += PacketEncoder.SetVar('stats.' + str(loop) + '.text', GetText(OwnerID, RequestedKeysNames[loop]))
             loop += 1
 
         GetStatsPacket += PacketEncoder.SetVar('stats.[]', RequestedKeysNumber)
@@ -81,8 +81,8 @@ def ReceiveComponent(self, data, txn):
             key = 0
             while key != RequestedKeysNumber:
                 GetStatsForOwnersPacket += PacketEncoder.SetVar('stats.' + str(loop) + '.stats.' + str(key) + '.key', RequestedKeysNames[key])
-                GetStatsForOwnersPacket += PacketEncoder.SetVar('stats.' + str(loop) + '.stats.' + str(key) + '.value', 1)
-                GetStatsForOwnersPacket += PacketEncoder.SetVar('stats.' + str(loop) + '.stats.' + str(key) + '.text', '')
+                GetStatsForOwnersPacket += PacketEncoder.SetVar('stats.' + str(loop) + '.stats.' + str(key) + '.value', GetStat(OwnerIDs[loop], RequestedKeysNames[key]))
+                GetStatsForOwnersPacket += PacketEncoder.SetVar('stats.' + str(loop) + '.stats.' + str(key) + '.text', GetText(OwnerIDs[loop], RequestedKeysNames[key]))
                 key += 1
 
             GetStatsForOwnersPacket += PacketEncoder.SetVar('stats.' + str(loop) + '.stats.[]', RequestedKeysNumber)
@@ -95,7 +95,23 @@ def ReceiveComponent(self, data, txn):
         self.transport.getHandle().sendall(GetStatsForOwnersPacket)
 
     elif txn == 'UpdateStats':
-        # Doesn't update any Stats
+        UpdateUsers = int(PacketDecoder.decode(data).GetVar('u.[]'))
+        loop = 0
+
+        while loop != UpdateUsers:
+            UpdateKeys = int(PacketDecoder.decode(data).GetVar('u.' + str(loop) + '.s.[]'))
+
+            loop_in_loop = 0
+            while loop_in_loop != UpdateKeys:
+                HeroID = PacketDecoder.decode(data).GetVar('u.' + str(loop) + '.o')
+                KeyName = PacketDecoder.decode(data).GetVar('u.' + str(loop) + '.s.' + str(loop_in_loop) + '.k')
+                KeyValue = PacketDecoder.decode(data).GetVar('u.' + str(loop) + '.s.' + str(loop_in_loop) + '.v')
+                KeyText = PacketDecoder.decode(data).GetVar('u.' + str(loop) + '.s.' + str(loop_in_loop) + '.t')
+
+                UpdateStat(HeroID, KeyName, KeyValue, KeyText)
+                loop_in_loop += 1
+
+            loop += 1
         UpdateStatsPacket = PacketEncoder.encode('rank', PacketEncoder.SetVar('TXN', 'UpdateStats'), 0xC0000000, self.PacketID)
         self.transport.getHandle().sendall(UpdateStatsPacket)
     else:
