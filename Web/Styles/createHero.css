@@ -1,6 +1,7 @@
 body.stripped {
 	background: url(/Images/Backgrounds/register_bg.jpg) no-repeat center top !important;
 }
+
 .steps {
 	float: left;
 	height: 39px;
@@ -58,7 +59,6 @@ body.stripped {
 	opacity: 1;
 }
 
-
 .go_to_site {
 	background: #8b342f;
 	border-bottom: 1px solid #b9453e;
@@ -76,7 +76,6 @@ body.stripped {
 	position: absolute;
 	width: 100%;
 }
-
 
 #createHero {
 	border-radius: 10px;

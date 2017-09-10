@@ -5,81 +5,81 @@
 	<title>Free FPS - Free Shooter Game - Online shooter - Battlefield Heroes</title>
 	<meta charset="utf-8">
 	<style>
-	          @font-face {
-	              font-family: 'HeaderFont';
-	              src: url('/Fonts/SofiaProSemiBold.eot');
-	              src: url('/Fonts/SofiaProSemiBold.eot#iefix') format('embedded-opentype'),
-	              url('/Fonts/SofiaProSemiBold.woff') format('woff'),
-	              url('/Fonts/SofiaProSemiBold.ttf') format('truetype');
-	          }
-	          
-	          @font-face {
-	              font-family: 'ComicFont';
-	              src: url('/Fonts/CaptainComicProBoldItalic.eot');
-	              src: url('/Fonts/CaptainComicProBoldItalic.eot#iefix') format('embedded-opentype'),
-	              url('/Fonts/CaptainComicProBoldItalic.woff') format('woff'),
-	              url('/Fonts/CaptainComicProBoldItalic.ttf') format('truetype');
-	          }
+	             @font-face {
+	                 font-family: 'HeaderFont';
+	                 src: url('/Fonts/SofiaProSemiBold.eot');
+	                 src: url('/Fonts/SofiaProSemiBold.eot#iefix') format('embedded-opentype'),
+	                 url('/Fonts/SofiaProSemiBold.woff') format('woff'),
+	                 url('/Fonts/SofiaProSemiBold.ttf') format('truetype');
+	             }
+	             
+	             @font-face {
+	                 font-family: 'ComicFont';
+	                 src: url('/Fonts/CaptainComicProBoldItalic.eot');
+	                 src: url('/Fonts/CaptainComicProBoldItalic.eot#iefix') format('embedded-opentype'),
+	                 url('/Fonts/CaptainComicProBoldItalic.woff') format('woff'),
+	                 url('/Fonts/CaptainComicProBoldItalic.ttf') format('truetype');
+	             }
 	</style>
 	<link href="Styles/main.css" media="screen" rel="stylesheet" type="text/css">
 	<link href="Styles/createHero.css" media="screen" rel="stylesheet" type="text/css">
 	<link href="Styles/register.css" media="screen" rel="stylesheet" type="text/css">
 	<link href="Styles/common-nav.css" media="screen" rel="stylesheet" type="text/css">
 	<script>
-		document.addEventListener("DOMContentLoaded", function(event) {
-			// Logged in?
-			var xmlHttp = new XMLHttpRequest();
-			xmlHttp.onreadystatechange = function() {
-				if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
-					var jsonResponse = JSON.parse(this.responseText);
-					if (jsonResponse.status == "ok" && jsonResponse.login) {
-						document.getElementById("loginForm").innerHTML = "<h5 style='color:white'>Logged as: " + jsonResponse.data.username + "</h5>";
-						document.getElementById("opswitch").innerHTML = "Logout";
-						document.getElementById("opswitch").href = "/Logout";
-					}
-				}
-			}
-			xmlHttp.open("GET", "/api/status", true); // true for asynchronous
-			xmlHttp.send(null);
-		});
-		function showMessage() {
-			if(typeof(Storage) !== "undefined") {
-				if (localStorage.MessageDisable) {
-				  document.getElementById("message").style.display = "none";
-				  document.getElementById("loginForm").className += " submitted"
-				} else {
-				  document.getElementById("message").style.display = "block";
-				  localStorage.MessageDisable = 'True';
+	       document.addEventListener("DOMContentLoaded", function(event) {
+	           // Logged in?
+	           var xmlHttp = new XMLHttpRequest();
+	           xmlHttp.onreadystatechange = function() {
+	               if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+	                   var jsonResponse = JSON.parse(this.responseText);
+	                   if (jsonResponse.status == "ok" && jsonResponse.login) {
+	                       document.getElementById("loginForm").innerHTML = "<h5 style='color:white'>Logged as: " + jsonResponse.data.username + "<\/h5>";
+	                       document.getElementById("opswitch").innerHTML = "Logout";
+	                       document.getElementById("opswitch").href = "/Logout";
+	                   }
+	               }
+	           }
+	           xmlHttp.open("GET", "/api/status", true); // true for asynchronous
+	           xmlHttp.send(null);
+	       });
+	       function showMessage() {
+	           if(typeof(Storage) !== "undefined") {
+	               if (localStorage.MessageDisable) {
+	                 document.getElementById("message").style.display = "none";
+	                 document.getElementById("loginForm").className += " submitted"
+	               } else {
+	                 document.getElementById("message").style.display = "block";
+	                 localStorage.MessageDisable = 'True';
 
-				}
-			} else {
-			  document.getElementById("message").style.display = "block";
-			}
+	               }
+	           } else {
+	             document.getElementById("message").style.display = "block";
+	           }
 
-			var xhttp = new XMLHttpRequest();
-			var username = document.getElementById("mail").value;
-			var password = document.getElementById("password").value;
-			xhttp.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200) {
-					var jsonResponse = JSON.parse(this.responseText);
-					if (jsonResponse.status == "err") {
-					   var errorMessage = jsonResponse.message;
-					   document.getElementById("loginError").style.display = "block";
-					   document.getElementById("error").innerHTML = "<p>" + errorMessage + "<\/p>";
-					   document.getElementById("loginForm").className = "loginForm"
-					} else if (jsonResponse.status == "ok") {
-					   window.setTimeout(function () {
-						   window.location.href = jsonResponse.data.redirect;
-					   }, 1500);
-					}
-				}
-			};
-			xhttp.open("POST", "/api/login", true);
-			xhttp.send("username="+username+"&password="+password);
-		}
-		function closeMessage() {
-			document.getElementById("loginError").style.display = "none";
-		}
+	           var xhttp = new XMLHttpRequest();
+	           var username = document.getElementById("mail").value;
+	           var password = document.getElementById("password").value;
+	           xhttp.onreadystatechange = function() {
+	               if (this.readyState == 4 && this.status == 200) {
+	                   var jsonResponse = JSON.parse(this.responseText);
+	                   if (jsonResponse.status == "err") {
+	                      var errorMessage = jsonResponse.message;
+	                      document.getElementById("loginError").style.display = "block";
+	                      document.getElementById("error").innerHTML = "<p>" + errorMessage + "<\/p>";
+	                      document.getElementById("loginForm").className = "loginForm"
+	                   } else if (jsonResponse.status == "ok") {
+	                      window.setTimeout(function () {
+	                          window.location.href = jsonResponse.data.redirect;
+	                      }, 1500);
+	                   }
+	               }
+	           };
+	           xhttp.open("POST", "/api/login", true);
+	           xhttp.send("username="+username+"&password="+password);
+	       }
+	       function closeMessage() {
+	           document.getElementById("loginError").style.display = "none";
+	       }
 
 	</script>
 </head>
@@ -119,6 +119,7 @@
 					</div>
 				</div>
 
+
 				<div id="p4fnav-login-block" style="display:block;float:right;">
 					<a class="p4fnav-url" href="/Login" id="opswitch">Login</a>
 
@@ -126,13 +127,14 @@
 					</div>
 				</div>
 
+
 				<div id="p4fnav-login-block" style="display:block;float:right;">
 					<a class="p4fnav-url" href="/CreateHero" id="opswitch">Register</a>
 
 					<div class="p4fnav-topnav-separator">
 					</div>
 				</div>
-				
+
 
 				<div id="p4fnav-logout-block" style="display:none;float:right;">
 					<div class="p4fnav-topnav-separator">
@@ -190,7 +192,7 @@
 
 
 					<div class="buttons">
-						<span class="continue bfhButton right"><span class="first-child" onclick="showMessage()"><button><span class="continue bfhButton right"><span class="continue bfhButton right">Continue</span></span></button></span></span>
+						<span class="continue bfhButton right"><span class="first-child" onclick="showMessage()"><button><span class="continue bfhButton right"><span class="continue bfhButton right"><span class="continue bfhButton right">Continue</span></span></span></button></span></span>
 					</div>
 				</div>
 			</div>
@@ -227,7 +229,7 @@
 
 
 					<div class="buttons">
-						<span class="continue bfhButton right"><span class="first-child" onclick="closeMessage(this)"><button><span class="continue bfhButton right"><span class="continue bfhButton right">Continue</span></span></button></span></span>
+						<span class="continue bfhButton right"><span class="first-child" onclick="closeMessage(this)"><button><span class="continue bfhButton right"><span class="continue bfhButton right"><span class="continue bfhButton right">Continue</span></span></span></button></span></span>
 					</div>
 				</div>
 			</div>

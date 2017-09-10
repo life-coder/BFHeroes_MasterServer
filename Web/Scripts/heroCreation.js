@@ -280,16 +280,21 @@
 						f(l.target);
 						if (!c.isEqual(this.oldValues, this.model.toJSON())) {
 							d("#createHero")
-								var heroname = prompt("Please enter your new hero name:", "Enter Name Here")
-								if (heroname == null || heroname == "") {
-									document.getElementById("loginError").style.display = "block";          
-									document.getElementById("error").innerHTML = "<p>Whoops! You didn't anwser question about hero name!<\/p>";
-									document.getElementById("loginForm").className = "loginForm"
-								} else {
-									document.getElementById("nameCharacterText").value = heroname
-									document.getElementById("createHero").submit()
-								}
-								
+							var heroname = prompt("Please enter your new hero name:", "Enter Name Here")
+							if (heroname == null || heroname == "") {
+								document.getElementById("loginError")
+									.style.display = "block";
+								document.getElementById("error")
+									.innerHTML = "<p>Whoops! You didn't anwser question about hero name!<\/p>";
+								document.getElementById("loginForm")
+									.className = "loginForm"
+							} else {
+								document.getElementById("nameCharacterText")
+									.value = heroname
+								document.getElementById("createHero")
+									.submit()
+							}
+
 						}
 					},
 					randomize: function() {

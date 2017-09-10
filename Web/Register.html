@@ -5,21 +5,21 @@
 	<title>Free FPS - Free Shooter Game - Online shooter - Battlefield Heroes</title>
 	<meta charset="utf-8">
 	<style>
-	       @font-face {
-	           font-family: 'HeaderFont';
-	           src: url('/Fonts/SofiaProSemiBold.eot');
-	           src: url('/Fonts/SofiaProSemiBold.eot#iefix') format('embedded-opentype'),
-	           url('/Fonts/SofiaProSemiBold.woff') format('woff'),
-	           url('/Fonts/SofiaProSemiBold.ttf') format('truetype');
-	       }
-	                
-	       @font-face {
-	           font-family: 'ComicFont';
-	           src: url('/Fonts/CaptainComicProBoldItalic.eot');
-	           src: url('/Fonts/CaptainComicProBoldItalic.eot#iefix') format('embedded-opentype'),
-	           url('/Fonts/CaptainComicProBoldItalic.woff') format('woff'),
-	           url('/Fonts/CaptainComicProBoldItalic.ttf') format('truetype');
-	       }
+	          @font-face {
+	              font-family: 'HeaderFont';
+	              src: url('/Fonts/SofiaProSemiBold.eot');
+	              src: url('/Fonts/SofiaProSemiBold.eot#iefix') format('embedded-opentype'),
+	              url('/Fonts/SofiaProSemiBold.woff') format('woff'),
+	              url('/Fonts/SofiaProSemiBold.ttf') format('truetype');
+	          }
+	                   
+	          @font-face {
+	              font-family: 'ComicFont';
+	              src: url('/Fonts/CaptainComicProBoldItalic.eot');
+	              src: url('/Fonts/CaptainComicProBoldItalic.eot#iefix') format('embedded-opentype'),
+	              url('/Fonts/CaptainComicProBoldItalic.woff') format('woff'),
+	              url('/Fonts/CaptainComicProBoldItalic.ttf') format('truetype');
+	          }
 	</style>
 	<link href="Styles/main.css" media="screen" rel="stylesheet" type="text/css">
 	<link href="Styles/createHero.css" media="screen" rel="stylesheet" type="text/css">
@@ -50,9 +50,9 @@
 
 		<div class="sunset-info" id="loginError">
 			<script>
-			 function closeMessage() (
-			     document.getElementById("loginError").style.display = "none"
-			 )
+			          function closeMessage() (
+			              document.getElementById("loginError").style.display = "none"
+			          )
 			</script>
 
 			<div class="bfhBox bfhBox-red bfhBox-has-splatter">
@@ -70,7 +70,7 @@
 
 
 						<div class="buttons">
-							<span class="continue bfhButton right"><span class="first-child" onclick="closeMessage()"><button><span class="continue bfhButton right"><span class="continue bfhButton right">Continue</span></span></button></span></span>
+							<span class="continue bfhButton right"><span class="first-child" onclick="closeMessage()"><button><span class="continue bfhButton right"><span class="continue bfhButton right"><span class="continue bfhButton right">Continue</span></span></span></button></span></span>
 						</div>
 					</div>
 				</div>
@@ -97,23 +97,10 @@
 					<div class="header">
 						<h2>Register</h2>
 					</div>
-					
-					<div class="clearfix magmaFormElementWrapper magmaInputWrapper">
-						<label class="magmaLabel" for="username">Username</label><span class="magmaInput size-300"><input id="username" name="username" size="300" type="text" required></span>
 
-						<div class="magmaAfter">
-						</div>
-					</div>
 
 					<div class="clearfix magmaFormElementWrapper magmaInputWrapper">
-						<label class="magmaLabel" for="email">E-Mail</label><span class="magmaInput size-300"><input id="email" name="email" size="300" type="text" required></span>
-
-						<div class="magmaAfter">
-						</div>
-					</div>
-
-					<div class="clearfix magmaFormElementWrapper magmaInputWrapper">
-						<label class="magmaLabel" for="password">Password</label><span class="magmaInput size-300"><input id="password" name="password" size="300" type="password" required></span>
+						<label class="magmaLabel" for="username">Username</label><span class="magmaInput size-300"><input id="username" name="username" required="" size="300" type="text"></span>
 
 						<div class="magmaAfter">
 						</div>
@@ -121,19 +108,36 @@
 
 
 					<div class="clearfix magmaFormElementWrapper magmaInputWrapper">
-						<label class="magmaLabel" for="password2">Confirm Password</label><span class="magmaInput size-300"><input id="password2" name="password2" size="300" type="password" required></span>
+						<label class="magmaLabel" for="email">E-Mail</label><span class="magmaInput size-300"><input id="email" name="email" required="" size="300" type="text"></span>
 
 						<div class="magmaAfter">
 						</div>
 					</div>
-					
+
+
 					<div class="clearfix magmaFormElementWrapper magmaInputWrapper">
-						<label class="magmaLabel" for="birthday">Birthday (dd-mm-yyyy)</label><span class="magmaInput size-300"><input id="birthday" name="birthday" size="300" type="date" required pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}"></span>
-						<span class="validity"></span>
+						<label class="magmaLabel" for="password">Password</label><span class="magmaInput size-300"><input id="password" name="password" required="" size="300" type="password"></span>
+
 						<div class="magmaAfter">
 						</div>
 					</div>
-					<span class="bfhButton"><span class="first-child"><button id="register" type="button"><span class="bfhButton"><span class="bfhButton">Register</span></span></button></span></span>
+
+
+					<div class="clearfix magmaFormElementWrapper magmaInputWrapper">
+						<label class="magmaLabel" for="password2">Confirm Password</label><span class="magmaInput size-300"><input id="password2" name="password2" required="" size="300" type="password"></span>
+
+						<div class="magmaAfter">
+						</div>
+					</div>
+
+
+					<div class="clearfix magmaFormElementWrapper magmaInputWrapper">
+						<label class="magmaLabel" for="birthday">Birthday (dd-mm-yyyy)</label><span class="magmaInput size-300"><input id="birthday" name="birthday" pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}" required="" size="300" type="date"></span> <span class="validity"></span>
+
+						<div class="magmaAfter">
+						</div>
+					</div>
+					<span class="bfhButton"><span class="first-child"><button id="register" type="button"><span class="bfhButton"><span class="bfhButton"><span class="bfhButton">Register</span></span></span></button></span></span>
 				</form>
 			</div>
 		</div>
@@ -171,30 +175,31 @@
 		</div>
 	</div>
 	<script>
-	document.getElementById("register").addEventListener("click", function () {
-	     var xhttp = new XMLHttpRequest();
-		 var username = document.getElementById("username").value;
-		 var email = document.getElementById("email").value;
-	     var password = document.getElementById("password").value;
-	     var password_confirmation = document.getElementById("password2").value;
-		 var birthday = document.getElementById("birthday").value;
-	     xhttp.onreadystatechange = function() {
-	       if (this.readyState == 4 && this.status == 200) {
-	        var jsonResponse = JSON.parse(this.responseText);
-	        if (jsonResponse.status == "err") {
-	           var errorMessage = jsonResponse.message;
-	           document.getElementById("loginError").style.display = "block";          
-	           document.getElementById("error").innerHTML = "<p>" + errorMessage + "<\/p>";
-	           document.getElementById("loginForm").className = "loginForm"
-	        } else if (jsonResponse.status == "ok") {
-	           window.location.href = jsonResponse.data.redirect;
-	        }
-	       }
-	     };
-	     xhttp.open("POST", "/api/register", true);
-	     xhttp.send("username="+username+"&email="+email+"&password="+password+"&password2="+password_confirmation+"&birthday="+birthday);
-	});
-	</script>
+	   document.getElementById("register").addEventListener("click", function () {
+	        var xhttp = new XMLHttpRequest();
+	        var username = document.getElementById("username").value;
+	        var email = document.getElementById("email").value;
+	        var password = document.getElementById("password").value;
+	        var password_confirmation = document.getElementById("password2").value;
+	        var birthday = document.getElementById("birthday").value;
+	        xhttp.onreadystatechange = function() {
+	          if (this.readyState == 4 && this.status == 200) {
+	           var jsonResponse = JSON.parse(this.responseText);
+	           if (jsonResponse.status == "err") {
+	              var errorMessage = jsonResponse.message;
+	              document.getElementById("loginError").style.display = "block";          
+	              document.getElementById("error").innerHTML = "<p>" + errorMessage + "<\/p>";
+	              document.getElementById("loginForm").className = "loginForm"
+	           } else if (jsonResponse.status == "ok") {
+	              window.location.href = jsonResponse.data.redirect;
+	           }
+	          }
+	        };
+	        xhttp.open("POST", "/api/register", true);
+	        xhttp.send("username="+username+"&email="+email+"&password="+password+"&password2="+password_confirmation+"&birthday="+birthday);
+	   });
+	</script> 
 	<script>
+	</script>
 </body>
 </html>
