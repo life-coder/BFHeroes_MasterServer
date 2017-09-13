@@ -2,7 +2,7 @@
 import sys
 
 from Config import *
-from Network import FESLClient, FESLServer, TheaterClient, TheaterServer, WebServer, GameWebServer, SecureWebServer
+from Network import FESLClient, FESLServer, TheaterClient, TheaterServer, WebServer, SecureWebServer
 from Framework import Database
 from Utils import Globals
 
@@ -101,18 +101,6 @@ def Start():
         print ConsoleColor('Success') + '[WebServer] Started listening at port: ' + str(WebServerPort) + ConsoleColor('End')
     except Exception, BindError:
         print ConsoleColor('Error') + 'Fatal Error! Cannot bind socket to port: ' + str(WebServerPort)
-        print 'Make sure that other programs are not currently listening to this port!'
-        print '\n'
-        print 'Additional error info:'
-        print BindError, ConsoleColor('End')
-        sys.exit(1)
-
-    try:
-        site = server.Site(GameWebServer.Simple())
-        reactor.listenTCP(GameWebServerPort, site)
-        print ConsoleColor('Success') + '[GameWebServer] Started listening at port: ' + str(GameWebServerPort) + ConsoleColor('End')
-    except Exception, BindError:
-        print ConsoleColor('Error') + 'Fatal Error! Cannot bind socket to port: ' + str(GameWebServerPort)
         print 'Make sure that other programs are not currently listening to this port!'
         print '\n'
         print 'Additional error info:'

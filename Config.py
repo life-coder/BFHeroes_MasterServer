@@ -3,7 +3,6 @@ DatabaseFileLocation = 'Data/Database.db'
 
 WebServerPort = 80
 SecureWebServerPort = 443
-GameWebServerPort = 8080
 FESLClientPort = 18270
 FESLServerPort = 18051
 TheaterClientPort = 18275

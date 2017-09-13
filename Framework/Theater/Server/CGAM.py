@@ -36,4 +36,3 @@ def ReceiveComponent(self, data):
     self.transport.getHandle().sendall(CGAMPacket)
 
     print ConsoleColor('Success') + '[TheaterServer][CGAM] Successfully created new game!' + ConsoleColor('End')
-    print repr(CGAMPacket)

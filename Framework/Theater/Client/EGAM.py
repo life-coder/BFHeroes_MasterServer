@@ -1,9 +1,8 @@
-from Utils import PacketEncoder, PacketDecoder, Globals
-from Config import ConsoleColor
-from time import sleep
+from Utils import PacketEncoder, PacketDecoder
+from Framework.Database import GetStat
 
 def ReceiveComponent(self, data):
-    print 'Got-EGAM: ' + repr(data)
+
     try:
         self.ServerGAMEOBJ
     except:
@@ -16,13 +15,11 @@ def ReceiveComponent(self, data):
         EGAMPacket += PacketEncoder.SetVar('TID', self.PacketID, True)
         EGAMPacket = PacketEncoder.encode('EGAM', EGAMPacket, 0x0, 0)
 
-        # Using static stats until i'm preparing stats management
-
-        # this packet gets sent to the SERVER the client connects to, it contains information about the client
+        # This packet gets sent to the SERVER the client connects to, it contains information about the client
         ServerEGRQPacket = PacketEncoder.SetVar('TID', 0)
         ServerEGRQPacket += PacketEncoder.SetVar('NAME', self.GAMEOBJ.Name)
-        ServerEGRQPacket += PacketEncoder.SetVar('UID', 1) # this has to be persona_id
-        ServerEGRQPacket += PacketEncoder.SetVar('PID', 1)
+        ServerEGRQPacket += PacketEncoder.SetVar('UID', self.GAMEOBJ.UserID) # this has to be persona_id
+        ServerEGRQPacket += PacketEncoder.SetVar('PID', self.GAMEOBJ.UserID)
         ServerEGRQPacket += PacketEncoder.SetVar('TICKET', 2018751182) # TODO: generate this
         ServerEGRQPacket += PacketEncoder.SetVar('IP', self.GAMEOBJ.EXTIP)
         ServerEGRQPacket += PacketEncoder.SetVar('PORT', self.GAMEOBJ.INTPORT)
@@ -31,13 +28,13 @@ def ReceiveComponent(self, data):
 
         ServerEGRQPacket += PacketEncoder.SetVar('PTYPE', PacketDecoder.decode(data).GetVar('PTYPE'))
         ServerEGRQPacket += PacketEncoder.SetVar('R-USER', self.GAMEOBJ.Name)
-        ServerEGRQPacket += PacketEncoder.SetVar('R-UID', 1)
-        ServerEGRQPacket += PacketEncoder.SetVar('R-U-accid', 1)
-        ServerEGRQPacket += PacketEncoder.SetVar('R-U-elo', 1000)
-        ServerEGRQPacket += PacketEncoder.SetVar('R-U-team', 1)
-        ServerEGRQPacket += PacketEncoder.SetVar('R-U-kit', 0)
-        ServerEGRQPacket += PacketEncoder.SetVar('R-U-lvl', 30)
-        ServerEGRQPacket += PacketEncoder.SetVar('R-U-dataCenter', 'iad')
+        ServerEGRQPacket += PacketEncoder.SetVar('R-UID', self.GAMEOBJ.UserID)
+        ServerEGRQPacket += PacketEncoder.SetVar('R-U-accid', self.GAMEOBJ.UserID)
+        ServerEGRQPacket += PacketEncoder.SetVar('R-U-elo', GetStat(self.GAMEOBJ.UserID, 'elo'))
+        ServerEGRQPacket += PacketEncoder.SetVar('R-U-team', GetStat(self.GAMEOBJ.UserID, 'c_team'))
+        ServerEGRQPacket += PacketEncoder.SetVar('R-U-kit', GetStat(self.GAMEOBJ.UserID, 'c_kit'))
+        ServerEGRQPacket += PacketEncoder.SetVar('R-U-lvl', GetStat(self.GAMEOBJ.UserID, 'level'))
+        ServerEGRQPacket += PacketEncoder.SetVar('R-U-dataCenter', self.ServerGAMEOBJ.GetData('B-U-data_center'))
         ServerEGRQPacket += PacketEncoder.SetVar('R-U-externalIp', self.GAMEOBJ.EXTIP)
         ServerEGRQPacket += PacketEncoder.SetVar('R-U-internalIp', PacketDecoder.decode(data).GetVar('R-INT-IP'))
         ServerEGRQPacket += PacketEncoder.SetVar('R-U-category', PacketDecoder.decode(data).GetVar('R-U-category'))
@@ -51,7 +48,7 @@ def ReceiveComponent(self, data):
         ServerEGRQPacket += PacketEncoder.SetVar('GID', PacketDecoder.decode(data).GetVar('GID'), True)
 
         ServerEGRQPacket = PacketEncoder.encode('EGRQ', ServerEGRQPacket, 0x0, 0)
-        print ServerEGRQPacket
+        print repr(ServerEGRQPacket)
 
         ClientEGEGPacket = PacketEncoder.SetVar('TID', self.PacketID)
         ClientEGEGPacket += PacketEncoder.SetVar('PL', 'PC')
@@ -69,7 +66,7 @@ def ReceiveComponent(self, data):
         ClientEGEGPacket += PacketEncoder.SetVar('LID', PacketDecoder.decode(data).GetVar('LID'))
         ClientEGEGPacket += PacketEncoder.SetVar('GID', PacketDecoder.decode(data).GetVar('GID'), True)
         ClientEGEGPacket = PacketEncoder.encode('EGEG', ClientEGEGPacket, 0x0, 0)
-        print ClientEGEGPacket
+        print repr(ClientEGEGPacket)
 
         self.transport.getHandle().sendall(EGAMPacket)
         self.ServerGAMEOBJ.TheaterNetworkInt.getHandle().sendall(ServerEGRQPacket)

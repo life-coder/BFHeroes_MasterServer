@@ -22,12 +22,11 @@ def ReceiveComponent(self, data):
             self.GAMEOBJ = Globals.Clients[loop]
             break
 
-    self.GAMEOBJ.Name = 'TestSoldier1'
     if CorrectlyLoggedIn == True:
         self.GAMEOBJ.EXTIP, self.GAMEOBJ.INTPORT = self.transport.client
         USERPacket = PacketEncoder.SetVar('TID', self.PacketID)
         USERPacket += PacketEncoder.SetVar('NAME', self.GAMEOBJ.Name)
-        USERPacket += PacketEncoder.SetVar('CID', '\n', True)
+        USERPacket += PacketEncoder.SetVar('CID', '', True)
 
         USERPacket = PacketEncoder.encode('USER', USERPacket, 0x0, 0)
         self.transport.getHandle().sendall(USERPacket)

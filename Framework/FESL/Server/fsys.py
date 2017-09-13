@@ -25,5 +25,14 @@ def ReceiveComponent(self, txn):
 
         self.transport.getHandle().sendall(MemCheckPacket)
         self.transport.getHandle().sendall(HelloPacket)
+
+    elif txn == 'MemCheck':
+        # Unneeded
+        pass
+
+    elif txn == 'Goodbye':
+        # Unneeded
+        pass
+
     else:
         print ConsoleColor('Warning') + '[FESLServer][fsys] Got unknown TXN (' + txn + ')' + ConsoleColor('End')

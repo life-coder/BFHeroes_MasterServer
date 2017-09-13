@@ -1,7 +1,7 @@
 from twisted.internet.protocol import Protocol, DatagramProtocol
 from Config import ConsoleColor
 from Utils import PacketDecoder
-from Framework.Theater.Server import CONN, USER, CGAM, UBRA, UGAM, EGRS, ECHO
+from Framework.Theater.Server import CONN, USER, CGAM, UBRA, UGAM, EGRS, ECHO, PLVT
 
 class HANDLER(Protocol):
     def __init__(self):
@@ -56,6 +56,8 @@ class HANDLER(Protocol):
             UGAM.ReceiveComponent(self, data)
         elif Command == 'EGRS':
             EGRS.ReceiveComponent(self, data)
+        elif Command == 'PLVT':
+            PLVT.ReceiveComponent(self, data)
         else:
             print ConsoleColor(
                 'Warning') + '[TheaterServer] Warning! Got unknown command (' + Command + ']!' + ConsoleColor(

@@ -128,6 +128,7 @@ def ReceiveComponent(self, data, txn):
         LoginPersonaPacket += PacketEncoder.SetVar('lkey', self.GAMEOBJ.LoginKey)
         LoginPersonaPacket += PacketEncoder.SetVar('profileId', self.GAMEOBJ.UserID)
         LoginPersonaPacket += PacketEncoder.SetVar('userId', self.GAMEOBJ.UserID)
+        self.GAMEOBJ.Name = GetUserName(self.GAMEOBJ.UserID)
 
         LoginPersonaPacket = PacketEncoder.encode('acct', LoginPersonaPacket, 0xC0000000, self.PacketID)
         self.transport.getHandle().sendall(LoginPersonaPacket)

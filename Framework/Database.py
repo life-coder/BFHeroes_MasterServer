@@ -45,6 +45,17 @@ def Prepare():
         cursor.execute(command)
         database.commit()
 
+        command = "CREATE TABLE `Servers` 	(" \
+                  "`ServerID`     INTEGER NOT NULL," \
+                  "`OwnerName`    TEXT NOT NULL," \
+                  "`ServerPassword`	TEXT NOT NULL UNIQUE," \
+                  "`Key`   TEXT NOT NULL" \
+                  ");"
+
+        cursor = database.cursor()
+        cursor.execute(command)
+        database.commit()
+
         command = "CREATE TABLE `WebSessions` 	(" \
                   "`AccountID`   INTEGER NOT NULL, " \
                   "`SessionID`	TEXT NOT NULL UNIQUE" \
@@ -176,3 +187,23 @@ def GetHeroIDByName(name):
     cursor = database.cursor()
     cursor.execute("SELECT HeroID FROM `Heroes` WHERE HeroName = ?", (name,))
     return cursor.fetchone()[0]
+
+def CheckServerPassword(password):
+    database = sqlite3.connect(DatabaseFileLocation)
+    cursor = database.cursor()
+    cursor.execute("SELECT * FROM `Servers` WHERE `ServerPassword` = ?", (password,))
+    value = cursor.fetchone()
+    if value == None:
+        return False
+    else:
+        return value[0]
+
+def GetServerAuthData(id):
+    database = sqlite3.connect(DatabaseFileLocation)
+    cursor = database.cursor()
+    cursor.execute("SELECT * FROM `Servers` WHERE `ServerID` = ?", (id,))
+    value = cursor.fetchone()
+    if value == None:
+        return False
+    else:
+        return value
