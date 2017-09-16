@@ -12,4 +12,5 @@ def ReceiveComponent(self, data):
     self.transport.getHandle().sendall(KICKPacket)
 
     PLVTPacket = PacketEncoder.SetVar('TID', self.PacketID, True)
+    PLVTPacket = PacketEncoder.encode('PLVT', PLVTPacket, 0x0, 0)
     self.transport.getHandle().sendall(PLVTPacket)
