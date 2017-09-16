@@ -123,7 +123,7 @@ def UpdateStat(ID, StatName, StatValue, StatText):
         cursor.execute("INSERT INTO `HeroesStats` (HeroID, StatName, StatValue, StatText) VALUES (?,?,?,?)", (ID, StatName, StatValue, StatText,))
     else:
         cursor = database.cursor()
-        cursor.execute("UPDATE `HeroesStats` SET StatName = ?, StatValue = ?, StatText = ? WHERE HeroID = ?", (StatName, StatValue, StatText, ID,))
+        cursor.execute("UPDATE `HeroesStats` SET StatName = ?, StatValue = ?, StatText = ? WHERE StatName = ? AND HeroID = ?", (StatName, StatValue, StatText, StatName, ID,))
     database.commit()
 
 def GetHeroes(ID):
@@ -186,7 +186,11 @@ def GetHeroIDByName(name):
     database = sqlite3.connect(DatabaseFileLocation)
     cursor = database.cursor()
     cursor.execute("SELECT HeroID FROM `Heroes` WHERE HeroName = ?", (name,))
-    return cursor.fetchone()[0]
+    value = cursor.fetchone()
+    if value == None:
+        return False
+    else:
+        return value[0]
 
 def CheckServerPassword(password):
     database = sqlite3.connect(DatabaseFileLocation)

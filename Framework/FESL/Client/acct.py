@@ -109,6 +109,8 @@ def ReceiveComponent(self, data, txn):
         while loop != RequestedPersonas:
             CurrentHero = PacketDecoder.decode(data).GetVar('userInfo.' + str(loop) + '.userName')
             HeroID = GetHeroIDByName(CurrentHero)
+            if HeroID == False:
+                HeroID = 0
             LookupUserInfoPacket += PacketEncoder.SetVar('userInfo.' + str(loop) + '.userName', CurrentHero)
             LookupUserInfoPacket += PacketEncoder.SetVar('userInfo.' + str(loop) + '.userId', HeroID)
             LookupUserInfoPacket += PacketEncoder.SetVar('userInfo.' + str(loop) + '.masterUserId', HeroID)
